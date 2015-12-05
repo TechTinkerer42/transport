@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <title>Foundation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text"><div style="width:220px"><h5>BDP Transport</h5></div></li>
+        <li><a href="#" data-toggle="offCanvas"><i class="fa fa-bars"></i></a></li>
+        <li class="has-submenu">
+          <a href="#">New</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="#">Booking Request</a></li>
+            <li><a href="#">Agent</a></li>
+            <li><a href="#">Trading Partner</a></li>
+            <li><a href="#">Carrier</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="search input-group">
+            <input class="input-group-field" type="search" placeholder="Look for...">
+            <div class="input-group-button">
+              <input type="submit" class="button" value="Search">
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="has-submenu">
+          <a href="#">Profile</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+        <h3>Off Canvas</h3>
+        <hr>
+        <ul class="vertical dropdown menu" data-dropdown-menu >
+          <li><a href="#">Item 1</a>
+            <ul class="menu">
+              <li><a href="#">Item 1A</a></li>
+              <!-- ... -->
+            </ul>
+          </li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+          <li><a href="#">Item 4</a></li>
+          <!-- ... -->
+        </ul>
+      </div>
+      <div class="off-canvas-content" data-off-canvas-content>
+
+
+
+        <div class="row">
+          <div class="small-12 columns">
+            <h2> Horizontal </h2>
+            <button type="button" class="button" data-toggle="offCanvas">Open Menu</button>
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li>
+                <a href="#">Item 1</a>
+                <ul class="menu">
+                  <li><a href="#">Item 1A</a></li>
+                  <!-- ... -->
+                </ul>
+              </li>
+              <li><a href="#">Item 2</a></li>
+              <li><a href="#">Item 3</a></li>
+              <li><a href="#">Item 4</a></li>
+            </ul>
+          <hr>
+          <div class="input-group">
+            <input class="input-group-field" type="search">
+            <div class="input-group-button">
+              <input type="submit" class="button" value="Submit">
+            </div>
+          </div>
+
+            <hr>
+            <p class="hide-for-medium">You are
+              <em>not</em> on a medium screen or larger.</p>
+            <p class="hide-for-large">You are
+              <em>not</em> on a large screen or larger.</p>
+            <hr>
+            <p class="hide-for-small-only">You are
+              <em>definitely not</em> on a small screen.</p>
+            <p class="hide-for-medium-only">You are
+              <em>definitely not</em> on a medium screen.</p>
+            <p class="hide-for-large-only">You are
+              <em>definitely not</em> on a large screen.</p>
+            <hr>
+            <p class="show-for-small-only">You are
+              <em>definitely</em> on a small screen.</p>
+            <p class="show-for-medium-only">You are
+              <em>definitely</em> on a medium screen.</p>
+            <p class="show-for-large-only">You are
+              <em>definitely</em> on a large screen.</p>
+            <hr>
+
+            <table>
+              <thead>
+                <tr>
+                  <th width="200">Table Header</th>
+                  <th>Table Header</th>
+                  <th width="150">Table Header</th>
+                  <th width="150">Table Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Content Goes Here</td>
+                  <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+                  <td>Content Goes Here</td>
+                  <td>Content Goes Here</td>
+                </tr>
+                <tr>
+                  <td>Content Goes Here</td>
+                  <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                  <td>Content Goes Here</td>
+                  <td>Content Goes Here</td>
+                </tr>
+                <tr>
+                  <td>Content Goes Here</td>
+                  <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                  <td>Content Goes Here</td>
+                  <td>Content Goes Here</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <my-app>loading...</my-app>
+
+      </div>
+    </div>
+  </div>
+  <footer style="background:#eee">
+    footer
+  </footer>
+
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/foundation/6.0.5/foundation.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+  <script src="../node_modules/systemjs/dist/system.src.js"></script>
+  <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script>
+System.config({
+  packages: {'app': {defaultExtension: 'js'}}
+});
+System.import('app/app');
+</script>
+</body>

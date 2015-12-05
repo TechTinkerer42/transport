@@ -1,0 +1,11 @@
+.top-bar li > a, .top-bar ul li > a {
+  color: black;
+}
+.search>input[type=search] {
+  width: inherit;
+  margin-right:0;
+}
+.search>div>input[type=submit] {
+  width: 80px;
+  margin-right:0;
+}
