@@ -16,7 +16,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text"><div style="width:220px"><h5>BDP Transport</h5></div></li>
+        <li class="menu-text"><div style="width:220px"><span>BDP Transport</span></div></li>
         <li><a href="#" data-toggle="offCanvas"><i class="fa fa-bars"></i></a></li>
         <li class="has-submenu">
           <a href="#">New</a>
@@ -170,6 +170,24 @@
   <script src="../node_modules/systemjs/dist/system.src.js"></script>
   <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
   <script>
+  function sideNav() {
+    if ($(window).width() < 769) {
+      $('.off-canvas-wrap').removeClass('move-right');
+      $('.left-off-canvas-toggle').show();
+    } else {
+      $('.off-canvas-wrap').addClass('move-right');
+      $('.left-off-canvas-toggle').hide();
+    }
+  }
+
+  $(window).resize(function() {
+    sideNav();
+  });
+
+
+
+
+
 System.config({
   packages: {'app': {defaultExtension: 'js'}}
 });
