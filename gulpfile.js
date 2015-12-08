@@ -5,8 +5,15 @@ var sourcemaps = require('gulp-sourcemaps');
 var tslint = require('gulp-tslint');
 var config = require('./gulp.config')();
 var tsProject = tsc.createProject('./src/tsconfig.json');
+var sass = require('gulp-sass');
+var browserSync = require('browser-sync');
+var superstatic = require('superstatic');
 
 var sourcemaps = require('gulp-sourcemaps');
+
+gulp.task('sass', function() {
+	
+});
 
 gulp.task('ts-lint', function() {
 	return gulp.src(config.allTs)
@@ -32,3 +39,24 @@ gulp.task('compile-ts', function() {
 	.pipe(sourcemaps.write('.'))
 	.pipe(gulp.dest(config.tsOutputPath));
 });
+
+gulp.task('serve', ['ts-lint', 'compile-ts'], function() {
+	
+	gulp.watch([config.allTs], ['ts-lint', 'compile-ts']);
+	
+	browserSync({
+		port: 3000,
+    files: ['index.html', '**/*.js', 'css/*'],
+    injectChanges: true,
+    logFileChanges: false,
+    logLevel: 'silent',    
+    notify: true,
+    reloadDelay: 0,
+    server: {
+      baseDir: './src'
+    }
+	});
+	
+});
+
+gulp.task('default', ['serve']);
