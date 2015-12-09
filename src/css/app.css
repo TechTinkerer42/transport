@@ -24,7 +24,7 @@
   -ms-transform: none;
   -o-transform: none;
   transform: none;
-  margin-left: 114px;
+  margin-left: 250px;
 }
 .left-off-canvas-menu {
   -ms-transform: none;
@@ -38,7 +38,7 @@
   height: 100%;
 }
 .move-right .left-off-canvas-menu {
-  width: 114px;
+  width: 250px;
 }
 .move-right .exit-off-canvas {
   display: none;
