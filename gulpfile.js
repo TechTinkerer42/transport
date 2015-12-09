@@ -8,11 +8,17 @@ var tsProject = tsc.createProject('./src/tsconfig.json');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var superstatic = require('superstatic');
+var del = require('del');
 
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function() {
 	
+});
+
+gulp.task('html', function() {
+	return gulp.src(['src/**/**.html'])
+		.pipe(gulp.dest(config.tsOutputPath));
 });
 
 gulp.task('ts-lint', function() {
@@ -23,6 +29,22 @@ gulp.task('ts-lint', function() {
 		});
 });
 
+gulp.task('copy-resources', ['html', 'copy-css', 'copy-libs']);
+
+gulp.task('clean', function() {
+	return del(config.tsOutputPath);
+});
+
+gulp.task('copy-libs', function() {
+	return gulp.src(config.jsLibPaths)
+		.pipe(gulp.dest(config.tsOutputPath));
+});
+
+gulp.task('copy-css', function() {
+	return gulp.src(['src/**/*.css'])
+		.pipe(gulp.dest(config.tsOutputPath));
+});
+
 //Compile TypeScript
 gulp.task('compile-ts', function() {
 	var sourceTsFiles = [
@@ -30,30 +52,30 @@ gulp.task('compile-ts', function() {
 	   config.typings
      ];
 	
-	var tsResult = gulp
+	return gulp
 		.src(sourceTsFiles)
-		.pipe(sourcemaps.init())
-		.pipe(tsc(tsProject));
-	
-	return tsResult.js
-	.pipe(sourcemaps.write('.'))
-	.pipe(gulp.dest(config.tsOutputPath));
+		.pipe(tsc(tsProject))
+		.pipe(gulp.dest(config.tsOutputPath));
+		
+	return tsResult;
 });
 
-gulp.task('serve', ['ts-lint', 'compile-ts'], function() {
+gulp.task('build', ['ts-lint', 'compile-ts', 'copy-resources']);
+
+gulp.task('serve', ['build'], function() {
 	
-	gulp.watch([config.allTs], ['ts-lint', 'compile-ts']);
+	gulp.watch([config.allTs, '**/*.html'], ['build']);
 	
 	browserSync({
 		port: 3000,
-    files: ['index.html', '**/*.js', 'css/*'],
+    files: ['src/index.html', '**/*.js', 'css/*'],
     injectChanges: true,
     logFileChanges: false,
     logLevel: 'silent',    
     notify: true,
     reloadDelay: 0,
     server: {
-      baseDir: './src'
+      baseDir: './scripts/build'
     }
 	});
 	
