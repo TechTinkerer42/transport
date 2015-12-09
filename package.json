@@ -3,19 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "angular2": "2.0.0-alpha.47",
+    "gulp": "^3.9.0",
     "systemjs": "0.19.2",
+    "tsd": "^0.6.5"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-tslint": "^4.1.2",
-    "gulp-typescript": "^2.10.0"
+    "gulp-typescript": "^2.10.0",
+    "tsd": "^0.6.5",
+    "tslint": "^3.1.1"
   }
 }
