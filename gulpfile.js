@@ -5,9 +5,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var tslint = require('gulp-tslint');
 var config = require('./gulp.config')();
 var tsProject = tsc.createProject('./src/tsconfig.json');
-var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
-var superstatic = require('superstatic');
 var del = require('del');
 
 var sourcemaps = require('gulp-sourcemaps');
