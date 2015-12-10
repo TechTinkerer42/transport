@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Foundation</title>
   <meta charset="utf-8">
@@ -9,123 +10,155 @@
   <link rel="stylesheet" href="css/app.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
   <style media="screen">
-  .sidebar-wrapper {
-    width:100%;
-  }
-    .sidebar-wrapper .sidebar {
-      float:left;
-      background:#eee;
-      width:45px;
-      overflow:hidden;
-      transition: width .2s;
+    body {
+      background: #eee
     }
+
+    #layout-content {
+      background: white
+    }
+
+    .sidebar-wrapper {
+      width: 100%;
+    }
+
+    .sidebar-wrapper .sidebar {
+      float: left;
+      background: #eee;
+      width: 45px;
+      overflow: hidden;
+      transition: width .2s;
+      height: 100%;
+    }
+
     .sidebar-wrapper .sidebar-content {
-      margin-left:45px;
+      margin-left: 45px;
       transition: margin-left .2s;
     }
+
     .sidebar-inner {
-      padding:10px;
-      width:230px;
+      padding: 10px;
+      width: 230px;
     }
+
     .sidebar.is-fat {
-      width:250px;
+      width: 250px;
     }
+
     .sidebar-content.is-fat {
-      margin-left:250px;
+      margin-left: 250px;
     }
-    footer {background: #ddd}
+
+    footer {
+      background: #ddd
+    }
   </style>
 
 </head>
+
 <body>
   <header>
     <nav class="top-bar">
-        <div class="top-bar-left">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text show-for-large">
-              <div style="width:220px"><span>BDP Transport</span></div>
-            </li>
-            <li class="menu-text  show-for-medium-only">
-              <i class="fa fa-reorder"></i> <span>BDP Transport</span>
-            </li>
-            <li class="menu-text  show-for-small-only">
-              <i class="fa fa-reorder"></i>
-            </li>
-            <li class="has-submenu hide-for-small-only">
-              <a href="#">New</a>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><a href="#">Booking Request</a></li>
-                <li><a href="#">Agent</a></li>
-                <li><a href="#">Trading Partner</a></li>
-                <li><a href="#">Carrier</a></li>
-              </ul>
-            </li>
-            <li>
-                <input class="input-group-field" type="search" placeholder="Look for...">
-            </li>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="has-submenu">
-              <a href="#">Profile</a>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-power-off"></i></a></li>
-          </ul>
-        </div>
-      </nav>
-  </header>
-
-<div id="layout">
-  <div id="layout-inner" data-off-canvas-wrapper>
-    <sidebar id="layout-sidebar" data-off-canvas>
-      <div class="sidebar-inner">
-        <h5>Sidebar</h5>
-        <ul class="no-bullet">
-          <li><i class="fa fa-hashtag fa-2x"></i> <a href="">One</a></li>
-          <li><i class="fa fa-shopping-bag fa-2x"></i> <a href="">Two</a></li>
-          <li><i class="fa fa-fort-awesome fa-2x"></i> <a href="">Three</a></li>
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text show-for-large">
+            <div style="width:220px">
+              <span>BDP Transport</span>
+            </div>
+          </li>
+          <li class="menu-text  show-for-medium-only">
+            <i data-toggle="layout-sidebar" class="fa fa-reorder"></i>
+            <span>BDP Transport</span>
+          </li>
+          <li class="menu-text  show-for-small-only">
+            <i data-toggle="layout-sidebar" class="fa fa-reorder"></i>
+          </li>
+          <li class="has-submenu hide-for-small-only">
+            <a href="#">New</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="#">Booking Request</a></li>
+              <li><a href="#">Agent</a></li>
+              <li><a href="#">Trading Partner</a></li>
+              <li><a href="#">Carrier</a></li>
+            </ul>
+          </li>
+          <li>
+            <input class="input-group-field" type="search" placeholder="Look for...">
+          </li>
         </ul>
       </div>
-    </sidebar>
-    <section id="layout-content">
-      <div class="row">
-        <div class="small-12 columns">
-          <h1>BodyContent</h1>
-          <hr>
-          <form name="preferences" action="">
-            <fieldset class="large-6 columns">
-              <legend>Set Sidebar Preference</legend>
-              <input type="radio" name="sidebar-preference" value="offcanvas" id="offside" checked required><label for="offside">Off to side</label>
-              <input type="radio" name="sidebar-preference" value="autohide" id="autohide" ><label for="autohide">Auto Hide</label>
-              <input type="radio" name="sidebar-preference" value="alwaysopen" id="alwaysopen" ><label for="alwaysopen">Always Open</label>
-            </fieldset>
-          </form>
-          <hr>
-          <span class="current-preference"></span>
-          <button type="button" class="button" data-toggle="layout-sidebar">Open Menu</button>
-          <hr>
-          <p>You are on a small screen or larger.</p>
-          <p class="show-for-medium">You are on a medium screen or larger.</p>
-          <p class="show-for-large">You are on a large screen or larger.</p>
-          <p class="show-for-small-only">You are <em>definitely</em> on a small screen.</p>
-          <p class="show-for-medium-only">You are <em>definitely</em> on a medium screen.</p>
-          <p class="show-for-large-only">You are <em>definitely</em> on a large screen.</p>
-          <p class="hide-for-medium">You are <em>not</em> on a medium screen or larger.</p>
-          <p class="hide-for-large">You are <em>not</em> on a large screen or larger.</p>
-          <p class="hide-for-small-only">You are <em>definitely not</em> on a small screen.</p>
-          <p class="hide-for-medium-only">You are <em>definitely not</em> on a medium screen.</p>
-          <p class="hide-for-large-only">You are <em>definitely not</em> on a large screen.</p>
-        </div>
+      <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="has-submenu">
+            <a href="#">Profile</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="#">One</a></li>
+              <li><a href="#">Two</a></li>
+              <li><a href="#">Three</a></li>
+            </ul>
+          </li>
+          <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+        </ul>
       </div>
-    </section>
+    </nav>
+  </header>
+
+  <div id="layout">
+    <div id="layout-inner" data-off-canvas-wrapper>
+      <sidebar id="layout-sidebar" data-off-canvas>
+        <div class="sidebar-inner">
+          <h5>Sidebar</h5>
+          <ul class="no-bullet">
+            <li><i class="fa fa-hashtag fa-2x"></i> <a href="">One</a></li>
+            <li><i class="fa fa-shopping-bag fa-2x"></i> <a href="">Two</a></li>
+            <li><i class="fa fa-fort-awesome fa-2x"></i> <a href="">Three</a></li>
+          </ul>
+        </div>
+      </sidebar>
+      <section id="layout-content" class="layout-content">
+        <div class="row">
+          <div class="small-12 columns">
+            <h1>BodyContent</h1>
+            <hr>
+            <form name="preferences" action="">
+              <fieldset class="large-6 columns">
+                <legend>Set Sidebar Preference</legend>
+                <input type="radio" name="sidebar-preference" value="offcanvas" id="offside" checked required>
+                <label for="offside">Off to side</label>
+                <input type="radio" name="sidebar-preference" value="autohide" id="autohide">
+                <label for="autohide">Auto Hide</label>
+                <input type="radio" name="sidebar-preference" value="alwaysopen" id="alwaysopen">
+                <label for="alwaysopen">Always Open</label>
+              </fieldset>
+            </form>
+            <hr>
+            <span class="current-preference"></span>
+            <button type="button" class="button" data-toggle="layout-sidebar">Open Menu</button>
+            <hr>
+            <p>You are on a small screen or larger.</p>
+            <p class="show-for-medium">You are on a medium screen or larger.</p>
+            <p class="show-for-large">You are on a large screen or larger.</p>
+            <p class="show-for-small-only">You are
+              <em>definitely</em> on a small screen.</p>
+            <p class="show-for-medium-only">You are
+              <em>definitely</em> on a medium screen.</p>
+            <p class="show-for-large-only">You are
+              <em>definitely</em> on a large screen.</p>
+            <p class="hide-for-medium">You are
+              <em>not</em> on a medium screen or larger.</p>
+            <p class="hide-for-large">You are
+              <em>not</em> on a large screen or larger.</p>
+            <p class="hide-for-small-only">You are
+              <em>definitely not</em> on a small screen.</p>
+            <p class="hide-for-medium-only">You are
+              <em>definitely not</em> on a medium screen.</p>
+            <p class="hide-for-large-only">You are
+              <em>definitely not</em> on a large screen.</p>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
-</div>
 
 
   <footer>
@@ -141,52 +174,57 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/foundation/6.0.5/foundation.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
   <script>
-      var useMouseLeave = false;
-      var changeLayout = function(){
-          $('#layout').removeClass();
-          $('#layout-inner').removeClass();
-          $('#layout-sidebar').removeClass();
-          $('#layout-content').removeClass();
+    var useMouseLeave = false;
+    var forceOffCanvas = false;
 
-        if(x==='autohide') {
-          $('#layout').addClass('sidebar-wrapper');
-          $('#layout-sidebar').addClass('sidebar show-for-medium');
-          $('#layout-content').addClass('sidebar-content');
-          useMouseLeave = true;
-          $('.sidebar').mouseenter(function(){
-            $('.sidebar-content').addClass('is-fat');
-            $('.sidebar').addClass('is-fat');
-          }).mouseleave(function(){
-            if(useMouseLeave) {
-              $('.sidebar-content').removeClass('is-fat');
-              $('.sidebar').removeClass('is-fat');
-            }
-          })
-        }
-        else if(x==='offcanvas') {
-          $('#layout').addClass('off-canvas-wrapper');
-          $('#layout-inner').addClass('off-canvas-wrapper-inner');
-          $('#layout-sidebar').addClass('off-canvas position-left');
-          $('#layout-content').addClass('off-canvas-content');
-        }
-        else { // alwaysopen
-          useMouseLeave = false;
-          $('#layout').addClass('sidebar-wrapper');
-          $('#layout-sidebar').addClass('sidebar show-for-medium is-fat');
-          $('#layout-content').addClass('sidebar-content is-fat');
-        }
+    var changeLayout = function() {
+      $('#layout').removeClass();
+      $('#layout-inner').removeClass();
+      $('#layout-sidebar').removeClass();
+      $('#layout-content').removeClass();
+
+      if (x === 'autohide' && !forceOffCanvas) {
+        $('#layout').addClass('sidebar-wrapper');
+        $('#layout-sidebar').addClass('sidebar show-for-medium');
+        $('#layout-content').addClass('sidebar-content');
+        useMouseLeave = true;
+        $('.sidebar').mouseenter(function() {
+          $('.sidebar-content').addClass('is-fat');
+          $('.sidebar').addClass('is-fat');
+        }).mouseleave(function() {
+          if (useMouseLeave) {
+            $('.sidebar-content').removeClass('is-fat');
+            $('.sidebar').removeClass('is-fat');
+          }
+        })
+      }  else if(x === 'alwaysopen' && !forceOffCanvas) { // alwaysopen
+        useMouseLeave = false;
+        $('#layout').addClass('sidebar-wrapper');
+        $('#layout-sidebar').addClass('sidebar show-for-medium is-fat');
+        $('#layout-content').addClass('sidebar-content is-fat');
+      } else  { // if (x === 'offcanvas')
+        $('#layout').addClass('off-canvas-wrapper');
+        $('#layout-inner').addClass('off-canvas-wrapper-inner');
+        $('#layout-sidebar').addClass('off-canvas position-left');
+        $('#layout-content').addClass('off-canvas-content');
       }
+    }
 
-      var x = $('input[name=sidebar-preference]').val();
+    var x = $('input[name=sidebar-preference]').val();
+    $('.current-preference').text(x);
+    changeLayout();
+
+    $('input[name=sidebar-preference]').change(function() {
+      x = $(this).val();
       $('.current-preference').text(x);
       changeLayout();
+    });
 
-      $('input[name=sidebar-preference]').change(function(){
-        x = $(this).val();
-        $('.current-preference').text(x);
+    $(window).on('changed.zf.mediaquery', function(event, name) {
+      forceOffCanvas = (name === 'small' || name === 'medium');
         changeLayout();
-      })
-
+    });
   </script>
 </body>
+
 </html>
