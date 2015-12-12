@@ -61,3 +61,55 @@
 .ad-block {
   margin-bottom: 2rem;
 }
+
+body {
+  background: #eee
+}
+
+#layout-content {
+  background: white
+}
+
+.sidebar-wrapper {
+  width: 100%;
+}
+
+.sidebar-wrapper .sidebar {
+  float: left;
+  background: #eee;
+  width: 45px;
+  overflow: hidden;
+  transition: width .2s;
+  height: 100%;
+}
+
+.sidebar-wrapper .sidebar-content {
+  margin-left: 45px;
+  transition: margin-left .2s;
+}
+
+.sidebar-inner {
+  padding: 10px;
+  width: 230px;
+}
+
+.sidebar.is-fat {
+  width: 250px;
+}
+
+.sidebar-content.is-fat {
+  margin-left: 250px;
+}
+
+footer {
+  background: #ddd
+}
+.preference-pane {
+  width:300px;
+  box-shadow: 0 2px 2px #ccc;
+  border:none;
+}
+.preference-pane input[type=radio] {
+  width:12px;
+  margin-right:0;
+}
