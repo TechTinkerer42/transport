@@ -13,7 +13,7 @@
 
 <body>
   <header>
-    <nav class="top-bar"  >
+    <nav class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu data-options="disableHover:true;clickOpen:true;">
           <li class="menu-text show-for-large">
@@ -44,21 +44,21 @@
       </div>
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
-          <li >
+          <li>
             <a data-toggle="profile-dropdown">Profile</a>
             <div class="dropdown-pane bottom preference-pane" id="profile-dropdown" data-dropdown data-options="positionClass:bottom">
               <h6>Settings</h6>
               <hr>
 
-                <fieldset class="small-12 columns">
-                  <legend>Sidebar</legend>
-                  <input type="radio" name="sidebar-preference" value="offcanvas" id="offside" checked required>
-                  <label for="offside">Off</label>
-                  <input type="radio" name="sidebar-preference" value="autohide" id="autohide">
-                  <label for="autohide">Auto</label>
-                  <input type="radio" name="sidebar-preference" value="alwaysopen" id="alwaysopen">
-                  <label for="alwaysopen">Always</label>
-                </fieldset>
+              <fieldset class="small-12 columns">
+                <legend>Sidebar</legend>
+                <input type="radio" name="sidebar-preference" value="offcanvas" id="offside" checked required>
+                <label for="offside">Off</label>
+                <input type="radio" name="sidebar-preference" value="autohide" id="autohide">
+                <label for="autohide">Auto</label>
+                <input type="radio" name="sidebar-preference" value="alwaysopen" id="alwaysopen">
+                <label for="alwaysopen">Always</label>
+              </fieldset>
 
               <hr>
 
@@ -117,18 +117,18 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/foundation/6.0.5/foundation.min.js"></script>
   <script type="text/javascript" src="../js/layout.js"></script>
 
-  <script type="text/javascript" src="../../node_modules/systemjs/dist/system.src.js"></script>
-  <script type="text/javascript" src="../../node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script type="text/javascript" src="//code.angularjs.org/2.0.0-alpha.48/router.dev.js"></script>
+  <script type="text/javascript" src="../../node_modules/systemjs/dist/system.js"></script>
+  <script type="text/javascript" src="../../node_modules/angular2/bundles/angular2.js"></script>
+  <script type="text/javascript" src="../../node_modules/angular2/bundles/router.js"></script>
 
   <script>
-  System.config({
-    packages: {'app': {
+    System.config({
+      baseUrl: '/src/app',
       defaultExtension: 'js'
-    }}
-  });
-    System.import('app/app');
+    });
+    System.import('app/app.js');
   </script>
 
 </body>
+
 </html>
