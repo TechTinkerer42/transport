@@ -1,14 +1,97 @@
-<div class="row">
-  <div class="small-12 columns">
-    <h3>Hello from app {{name}}</h3>
-    <h4>Agents: {{agents}}</h4>
-    <ul>
-      <li>Filler</li>
-      <li><a [routerLink]="['./Home']">Home</a></li>
-      <li><a [routerLink]="['./Agent']">Agent</a></li>
-    </ul>
-    <main>
+<header>
+  <nav class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu data-options="disableHover:true;clickOpen:true;">
+        <li class="menu-text show-for-large">
+          <div style="width:220px">
+            <span>BDP Transport</span>
+          </div>
+        </li>
+        <li class="menu-text  show-for-medium-only">
+          <i data-toggle="layout-sidebar" class="fa fa-reorder"></i>
+          <span>BDP Transport</span>
+        </li>
+        <li class="menu-text  show-for-small-only">
+          <i data-toggle="layout-sidebar" class="fa fa-reorder"></i>
+        </li>
+        <li class="has-submenu hide-for-small-only">
+          <a href="#">New</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="#">Booking Request</a></li>
+            <li><a href="#">Agent</a></li>
+            <li><a href="#">Trading Partner</a></li>
+            <li><a href="#">Carrier</a></li>
+          </ul>
+        </li>
+        <li>
+          <input class="input-group-field" type="search" placeholder="Look for...">
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a data-toggle="profile-dropdown">Profile</a>
+          <div class="dropdown-pane bottom preference-pane" id="profile-dropdown" data-dropdown data-options="positionClass:bottom">
+            <h6>Settings</h6>
+            <hr>
+
+            <fieldset class="small-12 columns">
+              <legend>Sidebar</legend>
+              <input type="radio" name="sidebar-preference" value="offcanvas" id="offside" checked required>
+              <label for="offside">Off</label>
+              <input type="radio" name="sidebar-preference" value="autohide" id="autohide">
+              <label for="autohide">Auto</label>
+              <input type="radio" name="sidebar-preference" value="alwaysopen" id="alwaysopen">
+              <label for="alwaysopen">Always</label>
+            </fieldset>
+
+            <hr>
+
+            <fieldset class="small-12 columns">
+              <legend>Fonts</legend>
+              bigger smaller
+            </fieldset>
+            <hr>
+            <fieldset class="small-12 columns">
+              <legend>Dates</legend>
+              <div>
+                <label>Format
+                  <input type="text" placeholder="MM/dd/yyyy">
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </li>
+        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div id="layout" layoutMaster>
+  <div id="layout-inner" data-off-canvas-wrapper>
+    <sidebar id="layout-sidebar" data-off-canvas layoutSidebar>
+      <div class="sidebar-inner">
+        <h5>Sidebar</h5>
+        <ul class="no-bullet">
+          <li><i class="fa fa-hashtag fa-2x"></i> <a [routerLink]="['./Home']">Home</a></li>
+          <li><i class="fa fa-shopping-bag fa-2x"></i> <a [routerLink]="['./Agent']">Agent</a></li>
+          <li><i class="fa fa-fort-awesome fa-2x"></i> <a href="">Three</a></li>
+        </ul>
+      </div>
+    </sidebar>
+    <section id="layout-content" class="layout-content" layoutContent>
       <router-outlet></router-outlet>
-    </main>
+    </section>
   </div>
 </div>
+
+
+<footer>
+  <div class="row">
+    <div class="small-12 columns">
+      <p>Footer goes here</p>
+    </div>
+  </div>
+</footer>
