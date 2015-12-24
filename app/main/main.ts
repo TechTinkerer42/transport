@@ -5,7 +5,8 @@ import {RouteConfig, RouteParams, ROUTER_DIRECTIVES, APP_BASE_HREF, ROUTER_BINDI
 
 import {Home} from '../home/home';
 import {Agent, AgentService} from '../agent/agent';
-import {LayoutManager, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from '../layout/layout';
+import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from '../layout/layout';
+
 
 
 @Component({
@@ -13,7 +14,7 @@ import {LayoutManager, LayoutSidebarDirective, LayoutMasterDirective, LayoutCont
 })
 @View({
   templateUrl: 'app/main/index.html',
-  directives: [ROUTER_DIRECTIVES , LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective ]
+  directives: [ROUTER_DIRECTIVES, LayoutPreference, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective ]
 })
 @RouteConfig([
   { path: '/', as: 'Home', component: Home },

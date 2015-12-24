@@ -4,7 +4,7 @@
   "description": "Angular2 Transport Sandbox",
   "private": true,
   "scripts": {
-    "tsc": "tsc -w",
+    "tsc": "tsc -p ./app -w",
     "start": "live-server"
   },
   "keywords": [],

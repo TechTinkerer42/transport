@@ -1,53 +1,63 @@
-import {Directive, ElementRef, Renderer, Input, OnInit} from 'angular2/core';
+import {Directive, Component, View, ElementRef, Renderer, Input} from 'angular2/core';
 import 'jquery';
 import 'foundation-sites/dist/foundation';
 
 declare var jQuery:any;
 
-enum LayoutSchema { AutoHide, AlwaysOpen, OffCanvas };
+export enum LayoutSchema { AutoHide, AlwaysOpen, OffCanvas };
 
 interface LayoutListener {
   _type:String;
-  setLayout(layoutName: LayoutSchema, useMouseLeave: boolean): void;
+  changeLayout(layoutName: LayoutSchema): void;
 }
 
 interface LayoutMouseListener extends LayoutListener{
   notifyMouse(inOrOut: boolean):void;
 }
 
-export class LayoutManager implements OnInit {
-  useMouseLeave: boolean = false;
+
+
+export class LayoutManager  {
   private listeners: LayoutListener[] = [];
   private profileSchema: LayoutSchema = LayoutSchema.AutoHide;
   private activeSchema: LayoutSchema = LayoutSchema.AutoHide;
 
-  ngOnInit(){
-    console.log('init LayoutManager');
-    const $ = jQuery(window);
-    $(document).foundation();
+  constructor(){
 
-    $(window).on('changed.zf.mediaquery', (event:any, name:any) => {
-      console.log(`name=${name}`)
+    setTimeout(() => {
+      jQuery(document).foundation();
+      jQuery(window).on('changed.zf.mediaquery', (event:any, name:any) => {
 
-      if (name === 'small' || name === 'medium') {
-        this.activeSchema = LayoutSchema.OffCanvas
-      }
-      else {
-        this.activeSchema = this.profileSchema;
-      }
+        if (name === 'small' || name === 'medium') {
+          this.activeSchema = LayoutSchema.OffCanvas
+        }
+        else {
+          this.activeSchema = this.profileSchema;
+        }
 
-      this.listeners.forEach((listener)=>{
-        this.setLayout(listener);
-      })
-    });
+        this.listeners.forEach((listener:LayoutListener)=>{
+          this.updateListener(listener);
+        })
+      });
+    },0);
+
   }
 
-  setLayout(listener: LayoutListener) {
-    listener.setLayout(this.activeSchema, this.useMouseLeave);
+  setLayout(schema:LayoutSchema) {
+      this.profileSchema = schema;
+      this.activeSchema = schema;
+      this.listeners.forEach((listener:LayoutListener)=>{
+        this.updateListener(listener);
+      })
+  }
+
+  updateListener(listener: LayoutListener) {
+    listener.changeLayout(this.activeSchema);
   }
 
   register(listener: LayoutListener) {
     this.listeners.push(listener);
+    this.updateListener(listener);
   }
 
   notifyAllMouse(inOrOut: boolean) {
@@ -58,6 +68,29 @@ export class LayoutManager implements OnInit {
     });
   }
 }
+
+
+
+@Component({
+  selector: 'layout-preference'
+})
+@View({
+	templateUrl: 'app/layout/index.html'
+})
+export class LayoutPreference {
+  layoutSchema:number;
+
+  constructor(private layoutManager:LayoutManager) {
+    this.layoutSchema = 1;
+  }
+
+  changeLayout() {
+    console.log(`changeLayout:${this.layoutSchema}`)
+    this.layoutManager.setLayout(LayoutSchema[LayoutSchema[this.layoutSchema]]);
+  }
+}
+
+
 
 @Directive({
   selector: '[layoutSidebar]',
@@ -72,11 +105,15 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
 
   constructor(private el: ElementRef, private renderer: Renderer, private layoutManager: LayoutManager) {
     layoutManager.register(this);
-    layoutManager.setLayout(this);
   }
 
-  setLayout(name: LayoutSchema, useMouseLeave: boolean) {
+  changeLayout(name: LayoutSchema) {
     this.currentSchema = name;
+    this.renderer.setElementClass(this.el, 'sidebar', false);
+    this.renderer.setElementClass(this.el, 'show-for-medium', false);
+    this.renderer.setElementClass(this.el, 'is-fat', true);
+    this.renderer.setElementClass(this.el, 'position-left', false);
+    this.renderer.setElementClass(this.el, 'off-canvas', false);
 
     switch (name) {
       case LayoutSchema.AutoHide:
@@ -117,10 +154,12 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
       this.renderer.setElementClass(this.el, 'is-fat', true);
     }
     else {
-      this.renderer.setElementClass(this.el, 'is-fat', true);
+      this.renderer.setElementClass(this.el, 'is-fat', false);
     }
   }
 }
+
+
 
 @Directive({
   selector: '[layoutContent]'
@@ -130,13 +169,16 @@ export class LayoutContentDirective implements LayoutMouseListener {
 
   constructor(private el: ElementRef, private renderer: Renderer, layoutManager: LayoutManager) {
     layoutManager.register(this);
-    layoutManager.setLayout(this);
   }
 
-  setLayout(name: LayoutSchema, useMouseLeave: boolean) {
+  changeLayout(name: LayoutSchema) {
+    this.renderer.setElementClass(this.el, 'sidebar-content', false);
+    this.renderer.setElementClass(this.el, 'is-fat', false);
+    this.renderer.setElementClass(this.el, 'off-canvas-content', false);
+
     switch (name) {
       case LayoutSchema.AutoHide:
-        this.renderer.setElementClass(this.el, 'sidebar-content', false);
+        this.renderer.setElementClass(this.el, 'sidebar-content', true);
         break;
 
       case LayoutSchema.AlwaysOpen:
@@ -145,7 +187,7 @@ export class LayoutContentDirective implements LayoutMouseListener {
         break;
 
       case LayoutSchema.OffCanvas:
-        this.renderer.setElementClass(this.el, 'off-canvas-content', false);
+        this.renderer.setElementClass(this.el, 'off-canvas-content', true);
         break;
     }
   }
@@ -155,10 +197,11 @@ export class LayoutContentDirective implements LayoutMouseListener {
       this.renderer.setElementClass(this.el, 'is-fat', true);
     }
     else {
-      this.renderer.setElementClass(this.el, 'is-fat', true);
+      this.renderer.setElementClass(this.el, 'is-fat', false);
     }
   }
 }
+
 
 
 @Directive({
@@ -169,10 +212,11 @@ export class LayoutInnerDirective implements LayoutListener {
 
   constructor(private el: ElementRef, private renderer: Renderer, layoutManager: LayoutManager) {
     layoutManager.register(this);
-    layoutManager.setLayout(this);
   }
 
-  setLayout(name: LayoutSchema, useMouseLeave: boolean) {
+  changeLayout(name: LayoutSchema) {
+    this.renderer.setElementClass(this.el, 'off-canvas-wrapper-inner', false);
+
     switch (name) {
       case LayoutSchema.AutoHide:
         break;
@@ -181,11 +225,13 @@ export class LayoutInnerDirective implements LayoutListener {
         break;
 
       case LayoutSchema.OffCanvas:
-        this.renderer.setElementClass(this.el, 'off-canvas-wrapper-inner', false);
+        this.renderer.setElementClass(this.el, 'off-canvas-wrapper-inner', true);
         break;
     }
   }
 }
+
+
 
 @Directive({
   selector: '[layoutMaster]'
@@ -195,13 +241,15 @@ export class LayoutMasterDirective implements LayoutListener {
 
   constructor(private el: ElementRef, private renderer: Renderer, layoutManager: LayoutManager) {
     layoutManager.register(this);
-    layoutManager.setLayout(this);
   }
 
-  setLayout(name: LayoutSchema, useMouseLeave: boolean) {
+  changeLayout(name: LayoutSchema) {
+    this.renderer.setElementClass(this.el, 'sidebar-wrapper', false);
+    this.renderer.setElementClass(this.el, 'off-canvas-wrapper', false);
+
     switch (name) {
       case LayoutSchema.AutoHide:
-        this.renderer.setElementClass(this.el, 'sidebar-wrapper', false);
+        this.renderer.setElementClass(this.el, 'sidebar-wrapper', true);
         break;
 
       case LayoutSchema.AlwaysOpen:
@@ -209,7 +257,7 @@ export class LayoutMasterDirective implements LayoutListener {
         break;
 
       case LayoutSchema.OffCanvas:
-        this.renderer.setElementClass(this.el, 'off-canvas-wrapper', false);
+        this.renderer.setElementClass(this.el, 'off-canvas-wrapper', true);
         break;
     }
   }

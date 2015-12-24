@@ -3,4 +3,5 @@ node_modules/
 jspm_packages/
 app/**/*.js
 app/**/*.js.map
+app/typings/
 scripts

@@ -35,17 +35,7 @@
           <div class="dropdown-pane bottom preference-pane" id="profile-dropdown" data-dropdown data-options="positionClass:bottom">
             <h6>Settings</h6>
             <hr>
-
-            <fieldset class="small-12 columns">
-              <legend>Sidebar</legend>
-              <input type="radio" name="sidebar-preference" value="offcanvas" id="offside" checked required>
-              <label for="offside">Off</label>
-              <input type="radio" name="sidebar-preference" value="autohide" id="autohide">
-              <label for="autohide">Auto</label>
-              <input type="radio" name="sidebar-preference" value="alwaysopen" id="alwaysopen">
-              <label for="alwaysopen">Always</label>
-            </fieldset>
-
+            <layout-preference></layout-preference>
             <hr>
 
             <fieldset class="small-12 columns">
@@ -69,8 +59,8 @@
   </nav>
 </header>
 
-<div id="layout" layoutMaster>
-  <div id="layout-inner" data-off-canvas-wrapper layoutInner>
+<div class="clearfix" id="layout-content" layoutMaster>
+  <div  data-off-canvas-wrapper layoutInner>
     <sidebar id="layout-sidebar" data-off-canvas layoutSidebar>
       <div class="sidebar-inner">
         <h5>Sidebar</h5>
@@ -81,7 +71,7 @@
         </ul>
       </div>
     </sidebar>
-    <section id="layout-content" class="layout-content" layoutContent>
+    <section  class="layout-content" layoutContent>
       <router-outlet></router-outlet>
     </section>
   </div>

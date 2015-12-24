@@ -1,0 +1,13 @@
+<form>
+  <fieldset class="small-12 columns">
+    <legend>Sidebar</legend>
+    value={{layoutSchema}} <br>
+    <input type="text" (change)="changeLayout()" [(ngModel)]="layoutSchema">
+    <input type="radio" name="sidebar-preference" id="offside" (click)="changeLayout()" [(ngModel)]="layoutSchema" value="0">
+    <label for="offside">Off</label>
+    <input type="radio" name="sidebar-preference" id="autohide" (click)="changeLayout()" [(ngModel)]="layoutSchema" value="1">
+    <label for="autohide">Auto</label>
+    <input type="radio" name="sidebar-preference" id="alwaysopen" (click)="changeLayout()" [(ngModel)]="layoutSchema" value="2">
+    <label for="alwaysopen">Always</label>
+  </fieldset>
+</form>
