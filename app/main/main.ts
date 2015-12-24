@@ -1,20 +1,19 @@
-
-
 import 'reflect-metadata';
 import {bootstrap} from 'angular2/bootstrap';
 import {bind, Component, View} from 'angular2/core';
 import {RouteConfig, RouteParams, ROUTER_DIRECTIVES, APP_BASE_HREF, ROUTER_BINDINGS} from 'angular2/router';
 
-import {Home} from 'app/home/home';
-import {Agent, AgentService} from 'app/agent/agent';
-import {LayoutManager, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from 'app/layout/layout';
+import {Home} from '../home/home';
+import {Agent, AgentService} from '../agent/agent';
+import {LayoutManager, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from '../layout/layout';
+
 
 @Component({
   selector: 'transport-app'
 })
 @View({
-  templateUrl: 'main/index.html',
-  directives: [ROUTER_DIRECTIVES, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective]
+  templateUrl: 'app/main/index.html',
+  directives: [ROUTER_DIRECTIVES , LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective ]
 })
 @RouteConfig([
   { path: '/', as: 'Home', component: Home },

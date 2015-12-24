@@ -5,7 +5,7 @@ import {Component, View} from 'angular2/core';
 	selector: 'agent'
 })
 @View({
-	templateUrl: 'agent/index.html'
+	templateUrl: 'app/agent/index.html'
 })
 export class Agent {
 }

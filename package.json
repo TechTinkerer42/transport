@@ -2,6 +2,7 @@
   "name": "transport2",
   "version": "0.0.1-SNAPSHOT",
   "description": "Angular2 Transport Sandbox",
+  "private": true,
   "scripts": {
     "tsc": "tsc -w",
     "start": "live-server"
@@ -9,7 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "angular2": "^2.0.0-beta.0"
+  },
   "jspm": {
     "dependencies": {
       "angular2": "npm:angular2@^2.0.0-beta.0",
