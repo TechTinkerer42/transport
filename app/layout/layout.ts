@@ -6,6 +6,8 @@ declare var jQuery:any;
 
 export enum LayoutSchema { AutoHide, AlwaysOpen, OffCanvas };
 
+
+
 interface LayoutListener {
   _type:String;
   changeLayout(layoutName: LayoutSchema): void;
@@ -19,8 +21,8 @@ interface LayoutMouseListener extends LayoutListener{
 
 export class LayoutManager  {
   private listeners: LayoutListener[] = [];
-  private profileSchema: LayoutSchema = LayoutSchema.AutoHide;
-  private activeSchema: LayoutSchema = LayoutSchema.AutoHide;
+  private profileSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
+  private activeSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
 
   constructor(){
 

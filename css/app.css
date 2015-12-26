@@ -1,3 +1,6 @@
+body {
+  background: #eee;
+}
 .top-bar li > a, .top-bar ul li > a {
   color: black;
 }
@@ -70,6 +73,9 @@ body {
   background: white
 }
 
+.sidebar {
+  height: 100%;
+}
 .sidebar-wrapper {
   width: 100%;
 }
@@ -113,3 +119,10 @@ footer {
   width:12px;
   margin-right:0;
 }
+
+/* angular form validation styles */
+.ng-touched {}
+.ng-untouched {}
+.ng-pristine {}
+.ng-valid {}
+.ng-invalid {border:1px solid red}

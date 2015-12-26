@@ -1,0 +1,156 @@
+<header class="row">
+  <div class="small-12 columns">
+    <h1>Form Test</h1>
+  </div>
+</header>
+<form (ngSubmit)="save()" #carrierForm="ngForm">
+  <div class="row">
+    <div class="small-12 columns">
+      <hr>
+      <p>before</p>
+      <p>diagnostic: {{diagnostic}} </p>
+      <p>middle</p>
+      <p>carrier: {{carrier.name}} </p>
+      <p>after</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-4 columns">
+      <label>Id
+        <input type="number" [(ngModel)]="carrier.id" ngControl="id" #id="ngForm" placeholder="ID" required>
+      </label>
+    </div>
+    <div class="medium-4 columns">
+      <label>Name
+        <input type="text" [(ngModel)]="carrier.name" ngControl="name" #name="ngForm" placeholder="Name" required>
+        <span [hidden]="name.valid" class="alert label"> Name is required </span>
+      </label>
+    </div>
+    <div class="medium-4 columns">
+      <label>Status
+        <select name="status" [(ngModel)]="carrier.status" ngControl="status" #status="ngForm" placeholder="Status" required>
+          <option value="">Choose</option>
+          <option *ngFor="#p of options" [value]="p">{{p}}</option>
+        </select>
+        <input type="text">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <label>
+        Description
+        <textarea [(ngModel)]="carrier.description" ngControl="description" #description="ngForm" placeholder="Description" required></textarea>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <button type="submit" [disabled]="!carrierForm.form.valid" class="success button">Save</button>
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="small-12 columns">
+    <hr>
+    <h1>Form Elements List</h1>
+  </div>
+</div>
+<form action="">
+  <div class="row">
+    <div class="medium-6 columns">
+      <label>Input Label
+        <input type="text" placeholder=".medium-6.columns">
+      </label>
+    </div>
+    <div class="medium-6 columns">
+      <label>Input Label
+        <input type="text" placeholder=".medium-6.columns">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <label>
+        How many puppies?
+        <input type="number" value="100">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <label>
+        What books did you read over summer break?
+        <textarea placeholder="None"></textarea>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <label>Select Menu
+        <select>
+          <option value="husker">Husker</option>
+          <option value="starbuck">Starbuck</option>
+          <option value="hotdog">Hot Dog</option>
+          <option value="apollo">Apollo</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <legend>Choose Your Favorite</legend>
+      <input type="radio" name="pokemon" value="Red" id="pokemonRed" required>
+      <label for="pokemonRed">Red</label>
+      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue">
+      <label for="pokemonBlue">Blue</label>
+      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow">
+      <label for="pokemonYellow">Yellow</label>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <legend>Check these out</legend>
+      <input id="checkbox1" type="checkbox">
+      <label for="checkbox1">Checkbox 1</label>
+      <input id="checkbox2" type="checkbox">
+      <label for="checkbox2">Checkbox 2</label>
+      <input id="checkbox3" type="checkbox">
+      <label for="checkbox3">Checkbox 3</label>
+    </fieldset>
+  </div>
+  <div class="row">
+    <row class="small-12 columns">
+      <fieldset class="fieldset">
+        <legend>Check these out</legend>
+        <input id="checkbox1" type="checkbox">
+        <label for="checkbox1">Checkbox 1</label>
+        <input id="checkbox2" type="checkbox">
+        <label for="checkbox2">Checkbox 2</label>
+        <input id="checkbox3" type="checkbox">
+        <label for="checkbox3">Checkbox 3</label>
+      </fieldset>
+    </row>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="input-group">
+        <span class="input-group-label">$</span>
+        <input class="input-group-field" type="number">
+        <div class="input-group-button">
+          <input type="submit" class="button" value="Submit">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <hr>
+      <button type="submit" class="success button">Save</button>
+      <button class="secondary hollow button" href="#">Cancel</button>
+    </div>
+  </div>
+</form>

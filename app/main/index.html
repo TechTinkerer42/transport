@@ -64,10 +64,19 @@
     <sidebar id="layout-sidebar" data-off-canvas layoutSidebar>
       <div class="sidebar-inner">
         <h5>Sidebar</h5>
-        <ul class="no-bullet">
-          <li><i class="fa fa-hashtag fa-2x"></i> <a [routerLink]="['./Home']">Home</a></li>
-          <li><i class="fa fa-shopping-bag fa-2x"></i> <a [routerLink]="['./Agent']">Agent</a></li>
-          <li><i class="fa fa-fort-awesome fa-2x"></i> <a href="">Three</a></li>
+
+        <ul class="vertical menu" data-accordion-menu>
+          <li><a [routerLink]="['./Home']"><i class="fa fa-home"></i> Home</a></li>
+          <li><a [routerLink]="['./Agent']"><i class="fa fa-train"></i>  Agent</a></li>
+          <li><a [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  Forms</a></li>
+          <li>
+            <a href=""><i class="fa fa-ship"></i> Administration</a>
+            <ul class="menu vertical nested">
+              <li> <a href="#">Users</a> </li>
+              <li><a href="#">Intermodal</a></li>
+              <li><a href="#">Standard Fees</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </sidebar>
