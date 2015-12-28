@@ -15,10 +15,11 @@
   <transport-app>
     Loading...
   </transport-app>
+  <script src="https://code.angularjs.org/2.0.0-beta.0/angular2-polyfills.js"></script>
   <script type="text/javascript" src="../jspm_packages/system.js"></script>
   <script type="text/javascript" src="../config.js"></script>
   <script>
-    System.import('app/main/main');
+    System.import('app/main/main').catch(console.error.bind(console));
   </script>
 </body>
 </html>

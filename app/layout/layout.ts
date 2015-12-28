@@ -74,9 +74,7 @@ export class LayoutManager  {
 
 
 @Component({
-  selector: 'layout-preference'
-})
-@View({
+  selector: 'layout-preference',
 	templateUrl: 'app/layout/index.html'
 })
 export class LayoutPreference {

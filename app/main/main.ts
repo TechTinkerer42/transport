@@ -1,10 +1,9 @@
-import 'reflect-metadata';
 import {bootstrap}  from 'angular2/platform/browser';
 import {bind, Component} from 'angular2/core';
-import {RouteConfig, RouteParams, ROUTER_DIRECTIVES, APP_BASE_HREF, ROUTER_BINDINGS} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
 
-import {Home} from '../home/home';
-import {Agent, AgentService} from '../agent/agent';
+import {HomeComponent} from '../home/home';
+import {AgentComponent,AgentService} from '../agent/agent';
 import {CarrierFormComponent} from '../forms/form';
 import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from '../layout/layout';
 
@@ -13,27 +12,21 @@ import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDir
 @Component({
   selector: 'transport-app',
   templateUrl: 'app/main/index.html',
-  directives: [ROUTER_DIRECTIVES, LayoutPreference, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective ]
+  directives: [ROUTER_DIRECTIVES,LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective]
 })
 @RouteConfig([
-  { path: '/', as: 'Home', component: Home },
-  { path: '/forms', as: 'Forms', component: CarrierFormComponent },
-  { path: '/agents', as: 'Agent', component: Agent }
+  { path: '/app', name: 'Home', component: HomeComponent } ,
+  { path: '/forms', name: 'Forms', component: CarrierFormComponent },
+  { path: '/agents', name: 'Agent', component: AgentComponent }
 ])
 export class TransportApp {
-  name: string;
-  agents: string[];
+  somevalue = 'this is some value'
 
-  constructor(agentService: AgentService) {
-    this.name = 'Alice';
-    this.agents = agentService.getAgents();
-  }
 }
 
 
 bootstrap(TransportApp, [
-  AgentService,
+  ROUTER_PROVIDERS,
   LayoutManager,
-  ROUTER_BINDINGS,
-  bind(APP_BASE_HREF).toValue(location.pathname)
-]);
+  AgentService
+]).catch(err => console.error(err));
