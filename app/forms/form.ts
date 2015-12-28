@@ -29,4 +29,9 @@ export class CarrierFormComponent {
   get diagnostic() {
     return JSON.stringify(this.carrier);
   }
+
+  showFormControls(form:NgForm){
+    return form.controls['id'] &&
+      form.controls['name'].value; // Dr. IQ
+  }
 }

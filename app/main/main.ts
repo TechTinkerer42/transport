@@ -12,7 +12,8 @@ import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDir
 @Component({
   selector: 'transport-app',
   templateUrl: 'app/main/index.html',
-  directives: [ROUTER_DIRECTIVES,LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective]
+  providers:[],
+  directives: [ROUTER_DIRECTIVES,LayoutPreference,LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective]
 })
 @RouteConfig([
   { path: '/app', name: 'Home', component: HomeComponent } ,
@@ -28,5 +29,6 @@ export class TransportApp {
 bootstrap(TransportApp, [
   ROUTER_PROVIDERS,
   LayoutManager,
-  AgentService
+  AgentService,
+  bind(APP_BASE_HREF).toValue(location.pathname)
 ]).catch(err => console.error(err));

@@ -22,7 +22,7 @@ interface LayoutMouseListener extends LayoutListener{
 export class LayoutManager  {
   private listeners: LayoutListener[] = [];
   private profileSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
-  private activeSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
+  activeSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
 
   constructor(){
 
@@ -78,15 +78,17 @@ export class LayoutManager  {
 	templateUrl: 'app/layout/index.html'
 })
 export class LayoutPreference {
-  layoutSchema:number;
+  layoutSchema:LayoutSchema;
 
   constructor(private layoutManager:LayoutManager) {
-    this.layoutSchema = 1;
+    console.log(`setting layout to: ${layoutManager.activeSchema}`)
+    this.layoutSchema = layoutManager.activeSchema;
   }
 
-  changeLayout() {
+  changeLayout(schema:number) {
     console.log(`changeLayout:${this.layoutSchema}`)
-    this.layoutManager.setLayout(LayoutSchema[LayoutSchema[this.layoutSchema]]);
+    this.layoutSchema = schema;
+    this.layoutManager.setLayout(this.layoutSchema);
   }
 }
 

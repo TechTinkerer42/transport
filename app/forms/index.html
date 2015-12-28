@@ -5,16 +5,6 @@
 </header>
 <form (ngSubmit)="save()" #carrierForm="ngForm">
   <div class="row">
-    <div class="small-12 columns">
-      <hr>
-      <p>before</p>
-      <p>diagnostic: {{diagnostic}} </p>
-      <p>middle</p>
-      <p>carrier: {{carrier.name}} </p>
-      <p>after</p>
-    </div>
-  </div>
-  <div class="row">
     <div class="medium-4 columns">
       <label>Id
         <input type="number" [(ngModel)]="carrier.id" ngControl="id" #id="ngForm" placeholder="ID" required>
@@ -23,7 +13,7 @@
     <div class="medium-4 columns">
       <label>Name
         <input type="text" [(ngModel)]="carrier.name" ngControl="name" #name="ngForm" placeholder="Name" required>
-        <span [hidden]="name.valid" class="alert label"> Name is required </span>
+        <span [hidden]="name.valid" > <span class="alert label"> Name is required </span></span>
       </label>
     </div>
     <div class="medium-4 columns">
@@ -32,7 +22,6 @@
           <option value="">Choose</option>
           <option *ngFor="#p of options" [value]="p">{{p}}</option>
         </select>
-        <input type="text">
       </label>
     </div>
   </div>
@@ -47,6 +36,14 @@
   <div class="row">
     <div class="small-12 columns">
       <button type="submit" [disabled]="!carrierForm.form.valid" class="success button">Save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+        <div class="callout secondary">
+          {{diagnostic}} <br>
+          Name via form.controls = {{showFormControls(carrierForm)}}
+        </div>
     </div>
   </div>
 </form>
