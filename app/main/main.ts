@@ -16,7 +16,7 @@ import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDir
   directives: [ROUTER_DIRECTIVES,LayoutPreference,LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective]
 })
 @RouteConfig([
-  { path: '/app', name: 'Home', component: HomeComponent } ,
+  { path: '/', name: 'Home', component: HomeComponent } ,
   { path: '/forms', name: 'Forms', component: CarrierFormComponent },
   { path: '/agents', name: 'Agent', component: AgentComponent }
 ])

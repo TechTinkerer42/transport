@@ -13,6 +13,7 @@ interface LayoutListener {
   changeLayout(layoutName: LayoutSchema): void;
 }
 
+
 interface LayoutMouseListener extends LayoutListener{
   notifyMouse(inOrOut: boolean):void;
 }
