@@ -42,6 +42,10 @@ export class CsrfService {
             );
     }
     
+    authenticated():boolean {
+        return this.headerName != null && this.headerValue != null;
+    }
+    
     destroyToken() {
         this.headerName = null;
         this.headerValue = null;
