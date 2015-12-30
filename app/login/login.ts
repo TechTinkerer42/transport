@@ -3,7 +3,6 @@ import {NgForm} from 'angular2/common';
 import {CsrfHttp} from '../csrf/csrfHttp';
 import {Credentials, AuthenticationService} from '../authentication/authentication';
 
-
 @Component ({
     selector: 'login',
     templateUrl: 'app/login/login.html',

@@ -37,4 +37,10 @@ export class CsrfService {
     addCsrfHeader(headers:Headers) {
         headers.append(this.headerName, this.headerValue);
     }
+    
+    getCsrfInfoFromHeaders(headers:Headers) {
+        this.headerName = headers.get('X-CSRF-HEADER');
+        this.headerValue = headers.get('X-CSRF-TOKEN');
+        console.log("Header name: " + this.headerName + " headerValue: " + this.headerValue);
+    }
 }
