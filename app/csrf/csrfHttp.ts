@@ -15,6 +15,10 @@ export class CsrfHttp {
     public request(request:Request) {
         return requestInternal(this.http, request, this.csrfService);
     }
+    
+    public setToken() {
+        this.csrfService.initToken();
+    }
 }
     function requestInternal(http:Http, request:Request, csrfService:CsrfService) {
         addHeaders(request, csrfService);

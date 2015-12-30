@@ -34,6 +34,7 @@ export class AuthenticationService {
             .subscribe(
                 data => {
                     console.log("I got some data", data);
+                    this.http.setToken();
                 },
                 err => {
                     console.log("an error occurred ", err);
@@ -46,10 +47,7 @@ export class AuthenticationService {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         headers.append('X-Requested-With', 'XMLHttpRequest');
-        this.http.request(new Request({url:'/transport/logout', method: RequestMethod.Post}))
-            .subscribe(
-                data=>{console.log("I got data: ", data)},
-                err=>{console.log(err)}
-            )
+        return this.http.request(new Request({url:'/transport/logout', method: RequestMethod.Post}))
+            
     }
 }

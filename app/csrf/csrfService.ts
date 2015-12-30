@@ -10,15 +10,6 @@ export class CsrfService {
     constructor(http:Http, headUrl:string) {
         this.http = http;
         this.headUrl = headUrl;
-        this.http.head(headUrl)
-            .subscribe(
-                data=> {
-                    console.log(data.headers.keys());
-                    this.headerName = data.headers.get('X-CSRF-HEADER');
-                    this.headerValue = data.headers.get('X-CSRF-TOKEN');
-                    console.log("Header name: " + this.headerName + " headerValue: " + this.headerValue);
-                }
-            );
     }
     
     setCsrfInfo(name:string, value:string) {
@@ -36,6 +27,24 @@ export class CsrfService {
     
     addCsrfHeader(headers:Headers) {
         headers.append(this.headerName, this.headerValue);
+    }
+    
+    initToken() {
+        console.log('initializing token');
+        this.http.head(this.headUrl)
+            .subscribe(
+                data=> {
+                    console.log(data.headers.keys());
+                    this.headerName = data.headers.get('X-CSRF-HEADER');
+                    this.headerValue = data.headers.get('X-CSRF-TOKEN');
+                    console.log("Header name: " + this.headerName + " headerValue: " + this.headerValue);
+                }
+            );
+    }
+    
+    destroyToken() {
+        this.headerName = null;
+        this.headerValue = null;
     }
     
     getCsrfInfoFromHeaders(headers:Headers) {

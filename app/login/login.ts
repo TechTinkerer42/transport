@@ -25,6 +25,20 @@ export class Login {
     }
     
     public logout() {
-        this.authenticationService.logout();
+        this.authenticationService.logout()
+        .subscribe(
+            data=>{console.log("I got data: ", data); return false;},
+            err=>{
+                // console.log(err);
+                if (err.status == 401) {
+                    console.log('user successfully logged out');
+                    alert("you're logged out, son");
+                } else {
+                    console.log('error processing logout', err);
+                    alert("something screwed up");
+                    return false;
+                }
+            }
+        );
     }
 }
