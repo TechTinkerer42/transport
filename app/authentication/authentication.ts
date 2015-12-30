@@ -1,5 +1,9 @@
-import {Http, Headers} from 'angular2/http';
+import {Headers, Request, RequestMethod} from 'angular2/http';
 import { Inject } from 'angular2/core';
+import {CsrfHttp} from '../csrf/csrfHttp';
+import {CsrfService} from '../csrf/csrfService';
+import {addHeaderTest, filterResponseTest} from '../interceptors/interceptors';
+import 'rxjs/add/operator/map'
 
 export class Credentials {
     public username:string;
@@ -9,9 +13,9 @@ export class Credentials {
 
 export class AuthenticationService {
     authenticated: boolean;
-    http:Http;
+    http:CsrfHttp;
     
-    constructor(@Inject(Http)http:Http){
+    constructor(@Inject(CsrfHttp)http:CsrfHttp){
         this.http = http;
     }
     
@@ -19,25 +23,14 @@ export class AuthenticationService {
         this.authenticated;
     }
     
-    forceHeaders() {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        headers.append('X-Requested-With', 'XMLHttpRequest');
-    //     this.http.head('http://transportdev.bdpsmart.com/transport/js/app/i18n/transport.js')
-    //         .subscribe(
-    //             data => {console.log(data)}   
-    //         );
-    }
-    
     authenticate(credentials:Credentials, callback:any) {
         
         var headers = new Headers();
         console.log("authentication for: ", credentials);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        headers.append('X-Requested-With', 'XMLHttpRequest');
         headers.append('Authorization', "Basic " + btoa(credentials.username + ":" + credentials.password));
         console.log('attempting login');
-        this.http.get('/transport/users/' + credentials.username, {headers: headers})
+        this.http.request(new Request({url:'/transport/users/' + credentials.username, method: RequestMethod.Get, headers: headers}))
             .subscribe(
                 data => {
                     console.log("I got some data", data);
@@ -53,9 +46,9 @@ export class AuthenticationService {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         headers.append('X-Requested-With', 'XMLHttpRequest');
-        this.http.post('/transport/logout', null)
+        this.http.request(new Request({url:'/transport/logout', method: RequestMethod.Post}))
             .subscribe(
-                data=>{console.log(data)},
+                data=>{console.log("I got data: ", data)},
                 err=>{console.log(err)}
             )
     }
