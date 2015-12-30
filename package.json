@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "tsc": "tsc -p ./app -w",
-    "start": "live-server --port=8081"
+    "server": "live-server --port=8081",
+    "start": "concurrent --kill-others \"npm run tsc\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
@@ -31,5 +32,8 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "devDependencies": {
+    "concurrently": "^1.0.0"
   }
 }
