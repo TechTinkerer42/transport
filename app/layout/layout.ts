@@ -1,8 +1,5 @@
 import {Directive, Component, View, ElementRef, Renderer, Input} from 'angular2/core';
-import 'jquery';
-import 'foundation-sites/dist/foundation';
 
-declare var jQuery:any;
 
 export enum LayoutSchema { AutoHide, AlwaysOpen, OffCanvas };
 
@@ -27,22 +24,7 @@ export class LayoutManager  {
 
   constructor(){
 
-    setTimeout(() => {
-      jQuery(document).foundation();
-      jQuery(window).on('changed.zf.mediaquery', (event:any, name:any) => {
-
-        if (name === 'small' || name === 'medium') {
-          this.activeSchema = LayoutSchema.OffCanvas
-        }
-        else {
-          this.activeSchema = this.profileSchema;
-        }
-
-        this.listeners.forEach((listener:LayoutListener)=>{
-          this.updateListener(listener);
-        })
-      });
-    },0);
+    // add window resize listener
 
   }
 

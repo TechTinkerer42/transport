@@ -7,15 +7,6 @@
   "installed": {
     "angular2/angular2.d.ts": {
       "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
-    },
-    "jquery/jquery.d.ts": {
-      "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
-    },
-    "jsdom/jsdom.d.ts": {
-      "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
-    },
-    "node/node.d.ts": {
-      "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
     }
   }
 }
