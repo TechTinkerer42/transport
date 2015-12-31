@@ -14,6 +14,7 @@ System.config({
 
   map: {
     "angular2": "npm:angular2@2.0.0-beta.0",
+    "angular2-jwt": "npm:angular2-jwt@0.1.3",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
@@ -57,6 +58,11 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "npm:angular2-jwt@0.1.3": {
+      "angular2": "npm:angular2@2.0.0-beta.0",
+      "rxjs": "npm:rxjs@5.0.0-beta.0",
+      "zone.js": "npm:zone.js@0.5.10"
     },
     "npm:angular2@2.0.0-beta.0": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
