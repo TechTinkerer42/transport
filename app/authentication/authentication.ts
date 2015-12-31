@@ -1,5 +1,10 @@
-import {Http, Headers} from 'angular2/http';
+import {Headers, Request, RequestMethod} from 'angular2/http';
 import { Inject } from 'angular2/core';
+import {CsrfHttp} from '../csrf/csrfHttp';
+import {CsrfService} from '../csrf/csrfService';
+import {addHeaderTest, filterResponseTest} from '../interceptors/interceptors';
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs';
 
 export class Credentials {
     public username:string;
@@ -9,9 +14,9 @@ export class Credentials {
 
 export class AuthenticationService {
     authenticated: boolean;
-    http:Http;
+    http:CsrfHttp;
     
-    constructor(@Inject(Http)http:Http){
+    constructor(@Inject(CsrfHttp)http:CsrfHttp){
         this.http = http;
     }
     
@@ -19,44 +24,36 @@ export class AuthenticationService {
         this.authenticated;
     }
     
-    forceHeaders() {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        headers.append('X-Requested-With', 'XMLHttpRequest');
-    //     this.http.head('http://transportdev.bdpsmart.com/transport/js/app/i18n/transport.js')
-    //         .subscribe(
-    //             data => {console.log(data)}   
-    //         );
-    }
-    
-    authenticate(credentials:Credentials, callback:any) {
+    authenticate(credentials:Credentials) {
         
         var headers = new Headers();
         console.log("authentication for: ", credentials);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        headers.append('X-Requested-With', 'XMLHttpRequest');
         headers.append('Authorization', "Basic " + btoa(credentials.username + ":" + credentials.password));
         console.log('attempting login');
-        this.http.get('/transport/users/' + credentials.username, {headers: headers})
-            .subscribe(
+        let response = this.http.request(new Request({url:'/transport/users/' + credentials.username, method: RequestMethod.Get, headers: headers}))
+        return Observable.create(observer => {
+             response.subscribe(
                 data => {
                     console.log("I got some data", data);
+                    this.http.setToken();
+                    observer.next();
                 },
                 err => {
                     console.log("an error occurred ", err);
+                    observer.next(err);
                 }
                 
-            )
+            );
+        });      
     }
     
     logout() {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         headers.append('X-Requested-With', 'XMLHttpRequest');
-        this.http.post('/transport/logout', null)
-            .subscribe(
-                data=>{console.log(data)},
-                err=>{console.log(err)}
-            )
+        
+        return this.http.request(new Request({url:'/transport/logout', method: RequestMethod.Post}))
+            
     }
 }
