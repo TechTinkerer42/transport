@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "tsc": "tsc -p ./app -w",
+    "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "start": "live-server"
   },
   "keywords": [],
@@ -28,5 +30,9 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "devDependencies": {
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.8.1"
   }
 }
