@@ -19,6 +19,8 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "es6-promise": "npm:es6-promise@3.0.2",
     "es6-shim": "npm:es6-shim@0.34.0",
+    "ng2-bootstrap": "npm:ng2-bootstrap@1.0.0-beta.1",
+    "ng2-table": "npm:ng2-table@0.46.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "rxjs": "npm:rxjs@5.0.0-beta.0",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -53,6 +55,19 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "npm:@reactivex/rxjs@5.0.0-alpha.7": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular2@2.0.0-alpha.46": {
+      "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "reflect-metadata": "npm:reflect-metadata@0.1.2",
+      "zone.js": "npm:zone.js@0.5.8"
     },
     "npm:angular2@2.0.0-beta.0": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
@@ -229,6 +244,14 @@ System.config({
       "bn.js": "npm:bn.js@4.6.1",
       "brorand": "npm:brorand@1.0.5"
     },
+    "npm:ng2-table@0.46.0": {
+      "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
+      "angular2": "npm:angular2@2.0.0-alpha.46",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "reflect-metadata": "npm:reflect-metadata@0.1.2",
+      "zone.js": "npm:zone.js@0.5.8"
+    },
     "npm:parse-asn1@5.0.0": {
       "asn1.js": "npm:asn1.js@4.2.1",
       "browserify-aes": "npm:browserify-aes@1.0.5",
@@ -311,6 +334,10 @@ System.config({
       "indexof": "npm:indexof@0.0.1"
     },
     "npm:zone.js@0.5.10": {
+      "es6-promise": "npm:es6-promise@3.0.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:zone.js@0.5.8": {
       "es6-promise": "npm:es6-promise@3.0.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }

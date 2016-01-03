@@ -2,7 +2,9 @@
 
 
 // overrides go before import
-@import 'bootstrap_override';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import 'variables';
+@import 'mixins';
 @import 'form_errors';
 @import 'layout';
 

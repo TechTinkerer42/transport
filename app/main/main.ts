@@ -1,11 +1,12 @@
 import {bootstrap}  from 'angular2/platform/browser';
 import {bind, Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
+import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap';
 
 import {HomeComponent} from '../home/home';
 import {AgentComponent,AgentService} from '../agent/agent';
 import {CarrierFormComponent} from '../forms/form';
-import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from '../layout/layout';
+import {LayoutManager,LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective} from '../layout/layout';
 
 
 
@@ -13,7 +14,9 @@ import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDir
   selector: 'transport-app',
   templateUrl: 'app/main/index.html',
   providers:[],
-  directives: [ROUTER_DIRECTIVES,LayoutPreference,LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, LayoutInnerDirective]
+  directives: [ROUTER_DIRECTIVES,DROPDOWN_DIRECTIVES,
+    LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective,
+    LayoutInnerDirective]
 })
 @RouteConfig([
   { path: '/', name: 'Home', component: HomeComponent } ,
@@ -22,6 +25,10 @@ import {LayoutManager, LayoutPreference, LayoutSidebarDirective, LayoutMasterDir
 ])
 export class TransportApp {
   somevalue = 'this is some value'
+
+  windowResize(event) {
+    console.log(event.currentTarget.innerWidth);
+  }
 
 }
 

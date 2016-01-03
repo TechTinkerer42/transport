@@ -1,11 +1,19 @@
 <form>
-  <fieldset class="small-12 columns">
-    <legend>Sidebar</legend>
-    <input type="radio" name="sidebar-preference" id="offside" (click)="changeLayout(0)" [checked]="layoutSchema===0">
-    <label for="offside">Auto</label>
-    <input type="radio" name="sidebar-preference" id="autohide" (click)="changeLayout(1)" [checked]="layoutSchema===1">
-    <label for="autohide">Always</label>
-    <input type="radio" name="sidebar-preference" id="alwaysopen" (click)="changeLayout(2)" [checked]="layoutSchema===2">
-    <label for="alwaysopen">Off</label>
+  <fieldset>
+    <legend>Sidebar preference</legend>
+    <label class="c-input c-radio">
+      <input type="radio" name="sidebar-preference" id="offside" (click)="changeLayout(0)" [checked]="layoutSchema===0">
+      <span class="c-indicator"></span>
+      Auto Hide
+    </label>
+    <label class="c-input c-radio">
+      <input type="radio" name="sidebar-preference" id="autohide" (click)="changeLayout(1)" [checked]="layoutSchema===1">
+      <span class="c-indicator"></span>
+      Always Open
+    </label>
+    <label class="c-input c-radio">
+      <input type="radio" name="sidebar-preference" id="alwaysopen" (click)="changeLayout(2)" [checked]="layoutSchema===2">
+      <span class="c-indicator"></span>
+      Off Canvas
+    </label>
   </fieldset>
-</form>

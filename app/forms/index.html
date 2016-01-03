@@ -1,153 +1,115 @@
-<header class="row">
-  <div class="small-12 columns">
-    <h1>Form Test</h1>
-  </div>
-</header>
-<form (ngSubmit)="save()" #carrierForm="ngForm">
+<main class="container">
+  <header class="row">
+    <div class="col-sm-12">
+      <h1>Form Test</h1>
+    </div>
+  </header>
   <div class="row">
-    <div class="medium-4 columns">
-      <label>Id
-        <input type="number" [(ngModel)]="carrier.id" ngControl="id" #id="ngForm" placeholder="ID" required>
-      </label>
-    </div>
-    <div class="medium-4 columns">
-      <label>Name
-        <input type="text" [(ngModel)]="carrier.name" ngControl="name" #name="ngForm" placeholder="Name" required>
-        <span [hidden]="name.valid" > <span class="alert label"> Name is required </span></span>
-      </label>
-    </div>
-    <div class="medium-4 columns">
-      <label>Status
-        <select name="status" [(ngModel)]="carrier.status" ngControl="status" #status="ngForm" placeholder="Status" required>
-          <option value="">Choose</option>
-          <option *ngFor="#p of options" [value]="p">{{p}}</option>
-        </select>
-      </label>
+    <div class="col-sm-12">
+      <form (ngSubmit)="save()" #carrierForm="ngForm">
+        <fielset class="form-group">
+          <label for="id">Id</label>
+          <input id="id" class="form-control" type="number" [(ngModel)]="carrier.id" ngControl="id" #id="ngForm" placeholder="ID" required>
+        </fielset>
+        <fieldset class="form-group">
+          <label for="name">Name</label>
+          <input id="name" class="form-control" type="text" [(ngModel)]="carrier.name" ngControl="name" #name="ngForm" placeholder="Name" required>
+          <span [hidden]="name.valid">
+            <span class="alert label"> Name is required </span>
+          </span>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="status">Status</label>
+          <select id="status" class="form-control" name="status" [(ngModel)]="carrier.status" ngControl="status" #status="ngForm" placeholder="Status" required>
+            <option value="">Choose</option>
+            <option *ngFor="#p of options" [value]="p">{{p}}</option>
+          </select>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" class="form-control" [(ngModel)]="carrier.description" ngControl="description" #description="ngForm" placeholder="Description" required></textarea>
+        </fieldset>
+        <fielset class="form-group">
+          <button class="btn btn-primary" type="submit" [disabled]="!carrierForm.form.valid">Save</button>
+          <pre>{{diagnostic}}<br> 
+              Name via form.controls = {{showFormControls(carrierForm)}}
+          </pre>
+
+        </fielset>
+      </form>
+        <hr>
     </div>
   </div>
+
+
+
+
+
   <div class="row">
-    <div class="small-12 columns">
-      <label>
-        Description
-        <textarea [(ngModel)]="carrier.description" ngControl="description" #description="ngForm" placeholder="Description" required></textarea>
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <button type="submit" [disabled]="!carrierForm.form.valid" class="success button">Save</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-        <div class="callout secondary">
-          {{diagnostic}} <br>
-          Name via form.controls = {{showFormControls(carrierForm)}}
+    <div class="col-sm-12">
+      <form>
+        <fieldset class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          <small class="text-muted">We'll never share your email with anyone else.</small>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleSelect1">Example select</label>
+          <select class="form-control" id="exampleSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleSelect2">Example multiple select</label>
+          <select multiple class="form-control" id="exampleSelect2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleTextarea">Example textarea</label>
+          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" class="form-control-file" id="exampleInputFile">
+          <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </fieldset>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Option one is this and that&mdash;be sure to include why it's great
+          </label>
         </div>
-    </div>
-  </div>
-</form>
-<div class="row">
-  <div class="small-12 columns">
-    <hr>
-    <h1>Form Elements List</h1>
-  </div>
-</div>
-<form action="">
-  <div class="row">
-    <div class="medium-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns">
-      </label>
-    </div>
-    <div class="medium-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns">
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <label>
-        How many puppies?
-        <input type="number" value="100">
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <label>
-        What books did you read over summer break?
-        <textarea placeholder="None"></textarea>
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <label>Select Menu
-        <select>
-          <option value="husker">Husker</option>
-          <option value="starbuck">Starbuck</option>
-          <option value="hotdog">Hot Dog</option>
-          <option value="apollo">Apollo</option>
-        </select>
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite</legend>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed" required>
-      <label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue">
-      <label for="pokemonBlue">Blue</label>
-      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow">
-      <label for="pokemonYellow">Yellow</label>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <legend>Check these out</legend>
-      <input id="checkbox1" type="checkbox">
-      <label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox">
-      <label for="checkbox2">Checkbox 2</label>
-      <input id="checkbox3" type="checkbox">
-      <label for="checkbox3">Checkbox 3</label>
-    </fieldset>
-  </div>
-  <div class="row">
-    <row class="small-12 columns">
-      <fieldset class="fieldset">
-        <legend>Check these out</legend>
-        <input id="checkbox1" type="checkbox">
-        <label for="checkbox1">Checkbox 1</label>
-        <input id="checkbox2" type="checkbox">
-        <label for="checkbox2">Checkbox 2</label>
-        <input id="checkbox3" type="checkbox">
-        <label for="checkbox3">Checkbox 3</label>
-      </fieldset>
-    </row>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <div class="input-group">
-        <span class="input-group-label">$</span>
-        <input class="input-group-field" type="number" placeholder="Group">
-        <div class="input-group-button">
-          <input type="submit" class="button" value="Submit">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Option two can be something else and selecting it will deselect option one
+          </label>
         </div>
-      </div>
+        <div class="radio disabled">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> Option three is disabled
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Check me out
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <hr>
-      <button type="submit" class="success button">Save</button>
-      <button class="secondary hollow button" href="#">Cancel</button>
-    </div>
-  </div>
-</form>
+
+
+</main>

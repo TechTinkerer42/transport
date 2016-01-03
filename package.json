@@ -8,7 +8,7 @@
     "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "server": "live-server",
-    "start": "concurrent --kill-others  \"npm run tsc\" \"npm run server\""
+    "start": "concurrent --kill-others  \"npm run tsc\" \"npm run watch-css\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "dependencies": {
     "angular2": "^2.0.0-beta.0",
     "bootstrap": "^4.0.0-alpha.2",
+    "ng2-bootstrap": "^1.0.0-beta.1",
     "rxjs": "^5.0.0-beta.0"
   },
   "jspm": {
@@ -23,6 +24,8 @@
       "angular2": "npm:angular2@^2.0.0-beta.0",
       "es6-promise": "npm:es6-promise@^3.0.2",
       "es6-shim": "npm:es6-shim@^0.34.0",
+      "ng2-bootstrap": "npm:ng2-bootstrap@1.0.0-beta.1",
+      "ng2-table": "npm:ng2-table@1.0.0-beta.1",
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
       "rxjs": "npm:rxjs@^5.0.0-beta.0"
     },
@@ -33,7 +36,7 @@
     }
   },
   "devDependencies": {
-    "concurrency": "^0.1.4",
+    "concurrently": "^1.0.0",
     "node-sass": "^3.4.2",
     "nodemon": "^1.8.1"
   }

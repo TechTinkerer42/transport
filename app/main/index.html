@@ -1,71 +1,55 @@
-<header>
-  <nav class="top-bar">
-    <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu data-options="disableHover:true;clickOpen:true;">
-        <li class="menu-text show-for-large">
-          <div style="width:220px">
-            <span>BDP Transport</span>
-          </div>
-        </li>
-        <li class="menu-text  show-for-medium-only">
-          <i data-toggle="layout-sidebar" class="fa fa-reorder"></i>
-          <span>BDP Transport</span>
-        </li>
-        <li class="menu-text  show-for-small-only">
-          <i data-toggle="layout-sidebar" class="fa fa-reorder"></i>
-        </li>
-        <li class="has-submenu hide-for-small-only">
-          <a href="#">New</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="#">Booking Request</a></li>
-            <li><a href="#">Agent</a></li>
-            <li><a href="#">Trading Partner</a></li>
-            <li><a href="#">Carrier</a></li>
-          </ul>
-        </li>
-        <li>
-          <input class="input-group-field" type="search" placeholder="Look for...">
-        </li>
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-          <a data-toggle="profile-dropdown">Profile</a>
-          <div class="dropdown-pane bottom preference-pane" id="profile-dropdown" data-dropdown data-options="positionClass:bottom">
-            <h6>Settings</h6>
-            <hr>
-            <layout-preference></layout-preference>
-            <hr>
+<nav class="navbar navbar-dark navbar-full bg-inverse" (window:resize)="windowResize($event)">
+  <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#">BDP Transport</a>
+  <div id="navbar">
+    <nav class="nav navbar-nav pull-xs-left">
+      <div class="btn-group" dropdown>
+        <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
+          New
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+          <li role="menuitem"><a class="dropdown-item" href="#">Agent</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Booking</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </nav>
+    <form class="pull-xs-left">
+      <input class="form-control" placeholder="Search..." type="search">
+    </form>
+    <nav class="nav pull-xs-right">
+      <a class="nav-item nav-link" href="#"><i class="fa fa-power-off"></i></a>
+    </nav>
+    <nav class="nav navbar-nav pull-xs-right">
+      <div class="btn-group" dropdown>
+        <a href id="simple-dropdown" dropdown-toggle>
+          Profile
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="single-dropdown">
+          <li role="menuitem"><a class="dropdown-item" href="#">Something</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Else</a></li>
+        </ul>
+      </div>
+    </nav>
 
-            <fieldset class="small-12 columns">
-              <legend>Fonts</legend>
-              bigger smaller
-            </fieldset>
-            <hr>
-            <fieldset class="small-12 columns">
-              <legend>Dates</legend>
-              <div>
-                <label>Format
-                  <input type="text" placeholder="MM/dd/yyyy">
-                </label>
-              </div>
-            </fieldset>
-          </div>
-        </li>
-        <li><a href="#"><i class="fa fa-power-off"></i></a></li>
-      </ul>
-    </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
-<div class="clearfix" id="layout-content" layoutMaster>
-  <div  data-off-canvas-wrapper layoutInner>
-    <sidebar id="layout-sidebar" data-off-canvas layoutSidebar>
+<div class="layout-master" layoutMaster>
+  <div class="layout-row" layoutInner>
+    <sidebar class="layout-sidebar" layoutSidebar>
       <div class="sidebar-inner">
         <h5>Sidebar</h5>
 
-        <ul class="vertical menu" data-accordion-menu>
+        <ul class="list-unstyled">
           <li><a [routerLink]="['./Home']"><i class="fa fa-home"></i> Home</a></li>
           <li><a [routerLink]="['./Agent']"><i class="fa fa-train"></i>  Agent</a></li>
           <li><a [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  Forms</a></li>
@@ -80,17 +64,19 @@
         </ul>
       </div>
     </sidebar>
-    <section  class="layout-content" layoutContent>
+    <section class="layout-content" layoutContent>
       <router-outlet></router-outlet>
     </section>
   </div>
 </div>
 
 
-<footer>
-  <div class="row">
-    <div class="small-12 columns">
-      <p>Footer goes here</p>
+<footer class="layout-footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="small-12 columns">
+        <p>Footer goes here</p>
+      </div>
     </div>
   </div>
 </footer>

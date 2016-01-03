@@ -23,9 +23,7 @@ export class LayoutManager  {
   activeSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
 
   constructor(){
-
     // add window resize listener
-
   }
 
   setLayout(schema:LayoutSchema) {
@@ -94,30 +92,22 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
 
   changeLayout(name: LayoutSchema) {
     this.currentSchema = name;
-    this.renderer.setElementClass(this.el, 'sidebar', false);
-    this.renderer.setElementClass(this.el, 'show-for-medium', false);
-    this.renderer.setElementClass(this.el, 'is-fat', true);
-    this.renderer.setElementClass(this.el, 'position-left', false);
-    this.renderer.setElementClass(this.el, 'off-canvas', false);
+    this.renderer.setElementClass(this.el, 'is-thin', false);
 
     switch (name) {
       case LayoutSchema.AutoHide:
         console.log('set layout autohide');
-        this.renderer.setElementClass(this.el, 'show-for-medium', true);
-        this.renderer.setElementClass(this.el, 'sidebar', true);
+        this.renderer.setElementClass(this.el, 'is-thin', true);
         break;
 
       case LayoutSchema.AlwaysOpen:
         console.log('set layout alwaysOpen');
-        this.renderer.setElementClass(this.el, 'sidebar', true);
-        this.renderer.setElementClass(this.el, 'show-for-medium', true);
-        this.renderer.setElementClass(this.el, 'is-fat', true);
+        this.renderer.setElementClass(this.el, 'is-thin', false);
         break;
 
       case LayoutSchema.OffCanvas:
         console.log('set layout offCanvas');
-        this.renderer.setElementClass(this.el, 'position-left', true);
-        this.renderer.setElementClass(this.el, 'off-canvas', true);
+        // this.renderer.setElementClass(this.el, 'is-thin', false);
         break;
     }
   }
@@ -136,10 +126,10 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
 
   notifyMouse(inOrOut: boolean) {
     if(inOrOut) {
-      this.renderer.setElementClass(this.el, 'is-fat', true);
+      this.renderer.setElementClass(this.el, 'is-thin', true);
     }
     else {
-      this.renderer.setElementClass(this.el, 'is-fat', false);
+      this.renderer.setElementClass(this.el, 'is-thin', false);
     }
   }
 }
@@ -163,23 +153,23 @@ export class LayoutContentDirective implements LayoutMouseListener {
 
     switch (name) {
       case LayoutSchema.AutoHide:
-        this.renderer.setElementClass(this.el, 'sidebar-content', true);
+        // this.renderer.setElementClass(this.el, 'sidebar-content', true);
         break;
 
       case LayoutSchema.AlwaysOpen:
-        this.renderer.setElementClass(this.el, 'sidebar-content', true);
+        // this.renderer.setElementClass(this.el, 'sidebar-content', true);
         this.renderer.setElementClass(this.el, 'is-fat', true);
         break;
 
       case LayoutSchema.OffCanvas:
-        this.renderer.setElementClass(this.el, 'off-canvas-content', true);
+        // this.renderer.setElementClass(this.el, 'off-canvas-content', true);
         break;
     }
   }
 
   notifyMouse(inOrOut: boolean) {
     if(inOrOut) {
-      this.renderer.setElementClass(this.el, 'is-fat', true);
+      // this.renderer.setElementClass(this.el, 'is-fat', true);
     }
     else {
       this.renderer.setElementClass(this.el, 'is-fat', false);
@@ -210,7 +200,7 @@ export class LayoutInnerDirective implements LayoutListener {
         break;
 
       case LayoutSchema.OffCanvas:
-        this.renderer.setElementClass(this.el, 'off-canvas-wrapper-inner', true);
+        // this.renderer.setElementClass(this.el, 'off-canvas-wrapper-inner', true);
         break;
     }
   }
@@ -234,15 +224,15 @@ export class LayoutMasterDirective implements LayoutListener {
 
     switch (name) {
       case LayoutSchema.AutoHide:
-        this.renderer.setElementClass(this.el, 'sidebar-wrapper', true);
+        // this.renderer.setElementClass(this.el, 'sidebar-wrapper', true);
         break;
 
       case LayoutSchema.AlwaysOpen:
-        this.renderer.setElementClass(this.el, 'sidebar-wrapper', true);
+        // this.renderer.setElementClass(this.el, 'sidebar-wrapper', true);
         break;
 
       case LayoutSchema.OffCanvas:
-        this.renderer.setElementClass(this.el, 'off-canvas-wrapper', true);
+        // this.renderer.setElementClass(this.el, 'off-canvas-wrapper', true);
         break;
     }
   }
