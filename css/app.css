@@ -61,13 +61,6 @@ body {
   color: #8c8c8c;
   transition: all .25s ease-in-out;
 }
-.ad-block {
-  margin-bottom: 2rem;
-}
-
-body {
-  background: #eee
-}
 
 #layout-content {
   background: white
@@ -81,7 +74,6 @@ body {
 }
 
 .sidebar-wrapper .sidebar {
-  float: left;
   background: #eee;
   width: 45px;
   overflow: hidden;

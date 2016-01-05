@@ -125,11 +125,11 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
   }
 
   notifyMouse(inOrOut: boolean) {
-    if(inOrOut) {
-      this.renderer.setElementClass(this.el, 'is-thin', true);
+    if (inOrOut) {
+      this.renderer.setElementClass(this.el, 'is-thin', false);
     }
     else {
-      this.renderer.setElementClass(this.el, 'is-thin', false);
+      this.renderer.setElementClass(this.el, 'is-thin', true);
     }
   }
 }
@@ -148,7 +148,7 @@ export class LayoutContentDirective implements LayoutMouseListener {
 
   changeLayout(name: LayoutSchema) {
     this.renderer.setElementClass(this.el, 'sidebar-content', false);
-    this.renderer.setElementClass(this.el, 'is-fat', false);
+    this.renderer.setElementClass(this.el, 'is-thin', false);
     this.renderer.setElementClass(this.el, 'off-canvas-content', false);
 
     switch (name) {
@@ -158,7 +158,7 @@ export class LayoutContentDirective implements LayoutMouseListener {
 
       case LayoutSchema.AlwaysOpen:
         // this.renderer.setElementClass(this.el, 'sidebar-content', true);
-        this.renderer.setElementClass(this.el, 'is-fat', true);
+        this.renderer.setElementClass(this.el, 'is-thin', false);
         break;
 
       case LayoutSchema.OffCanvas:
@@ -168,11 +168,11 @@ export class LayoutContentDirective implements LayoutMouseListener {
   }
 
   notifyMouse(inOrOut: boolean) {
-    if(inOrOut) {
-      // this.renderer.setElementClass(this.el, 'is-fat', true);
+    if (inOrOut) {
+      this.renderer.setElementClass(this.el, 'is-thin', false);
     }
     else {
-      this.renderer.setElementClass(this.el, 'is-fat', false);
+      this.renderer.setElementClass(this.el, 'is-thin', true);
     }
   }
 }
@@ -232,7 +232,7 @@ export class LayoutMasterDirective implements LayoutListener {
         break;
 
       case LayoutSchema.OffCanvas:
-        // this.renderer.setElementClass(this.el, 'off-canvas-wrapper', true);
+        this.renderer.setElementClass(this.el, 'off-canvas-wrapper', true);
         break;
     }
   }

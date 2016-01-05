@@ -1,7 +1,7 @@
 
 
-$sidebar-open-size: 250px;
-$sidebar-thin-size: 25px;
+$sidebar-open-size: 20%;
+$sidebar-thin-size: 3%;
 
 body {
   background: #ddd;
@@ -72,12 +72,13 @@ body {
   background:#eee;
 }
 .layout-master {
+  position: relative;
   display: table;
   width:100%;
-
-  &.is-off-canvas {
-    margin-left: -$sidebar-open-size;
-    width: 100% ;
+  @include transition(width .2s);
+  &.off-canvas-wrapper {
+    left:-25%;
+    width: 105% + $sidebar-open-size;
   }
 }
 .layout-row {
@@ -85,29 +86,27 @@ body {
 }
 .layout-sidebar {
   display: table-cell;
-  width: $sidebar-open-size;
-  height: 300px;
   vertical-align: top;
-  @include transition(margin-left .2s);
-
+  width:$sidebar-open-size;
+  min-height: 350px;
+  @include transition(width .2s);
   &.is-thin {
-    width: $sidebar-thin-size;
+    width:$sidebar-thin-size;
+    .link {
+      display: none;
+    }
   }
-}
-.layout-content {
-  display: table-cell;
-  background:#fff;
-  vertical-align: top;
-  @include transition(margin-left .2s);
-
-}
-.layout-footer {
-  padding:10px;
 }
 .sidebar-inner {
   margin:10px;
-  width: 230px;
-  position:absolute;
+}
+.layout-content {
+  display: table-cell;
+  vertical-align: top;
+  background:#fff;
+}
+.layout-footer {
+  padding:10px;
 }
 
 
@@ -138,10 +137,10 @@ body {
       -ms-transform: none;
       -o-transform: none;
       transform: none;
-      margin-left: 250px;
+      margin-left: $sidebar-open-size;
     }
     .left-off-canvas-menu {
-      width: 250px;
+      width: $sidebar-open-size;
     }
     .exit-off-canvas {
       display: none;
@@ -177,7 +176,7 @@ body {
   // .sidebar {
   //   height: 100%;
   //   &.is-fat {
-  //     width: 250px;
+  //     width: $sidebar-open-size;
   //   }
   // }
   // .sidebar-wrapper {
@@ -194,13 +193,13 @@ body {
   //     margin-left: 45px;
   //     transition: margin-left 0.2s;
   //     &.is-fat {
-  //       margin-left: 250px;
+  //       margin-left: $sidebar-open-size;
   //     }
   //   }
   // }
   // .sidebar-inner {
   //   padding: 10px;
-  //   width: 230px;
+  //   width: 2$sidebar-thin-size;
   // }
 
   .preference-pane {

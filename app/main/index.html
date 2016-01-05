@@ -47,15 +47,14 @@
   <div class="layout-row" layoutInner>
     <sidebar class="layout-sidebar" layoutSidebar>
       <div class="sidebar-inner">
-        <h5>Sidebar</h5>
+        <h5 class="link">Sidebar</h5>
 
         <ul class="list-unstyled">
-          <li><a [routerLink]="['./Home']"><i class="fa fa-home"></i> Home</a></li>
-          <li><a [routerLink]="['./Agent']"><i class="fa fa-train"></i>  Agent</a></li>
-          <li><a [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  Forms</a></li>
-          <li>
-            <a href=""><i class="fa fa-ship"></i> Administration</a>
-            <ul class="menu vertical nested">
+          <li><i class="fa fa-home"></i>  <a class="link" [routerLink]="['./Home']">Home</a></li>
+          <li><i class="fa fa-train"></i>  <a class="link"  [routerLink]="['./Agent']">Agent</a></li>
+          <li><i class="fa fa-truck"></i>  <a class="link"  [routerLink]="['./Forms']">Forms</a></li>
+          <li><i class="fa fa-ship"></i> <a class="link" href=""> Administration</a>
+            <ul class="menu vertical nested link">
               <li> <a href="#">Users</a> </li>
               <li><a href="#">Intermodal</a></li>
               <li><a href="#">Standard Fees</a></li>
