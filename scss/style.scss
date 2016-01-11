@@ -4,8 +4,9 @@
 // overrides go before import
 @import 'variables';
 @import 'mixins';
-@import 'form_errors';
+@import 'forms';
 @import 'layout';
+@import 'bootstrap_elem_overrides';
 
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/bootstrap/scss/bootstrap-grid';
