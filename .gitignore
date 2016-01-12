@@ -5,3 +5,7 @@ app/**/*.js
 app/**/*.js.map
 app/typings/
 scripts
+.sass-cache/
+css/style.css
+css/style.css.map
+

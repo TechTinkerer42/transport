@@ -24,12 +24,15 @@ function _window(): any {
   return window
 }
 
+
+
 const OPEN_BAR_CLASS = 'is-open-bar';
 const THIN_BAR_CLASS = 'is-thin-bar';
 const OFF_CANVAS_CLASS = 'is-off-canvas';
 const MIN_WIDTH = 768;
 const SIDEBAR_OPEN = 250;
 const SIDEBAR_BAR = 35;
+
 
 
 export class LayoutManager {
@@ -114,7 +117,7 @@ export class LayoutPreference {
 @Component({
     selector: 'layout-offcanvas-button',
     template: `
-        <a *ngIf="visible" (click)="toggleSidebar()"><i class="fa fa-align-justify"></i></a>
+        <a *ngIf="visible" (click)="toggleSidebar()"><i class="fa fa-bars"></i></a>
     `
 })
 export class OffCanvasButton implements LayoutListener {
@@ -192,14 +195,12 @@ export class LayoutMasterDirective implements LayoutWindowListener, LayoutMouseL
     }
 
     notifyResize(size:number) {
-
         if (this.layoutSchema == LayoutSchema.OffCanvas){
             this.layoutWidth = (size + SIDEBAR_OPEN) + 'px';
         }
         else {
             this.layoutWidth = (size) + 'px';
         }
-
     }
 
     notifyMouse(sidebarOpen: boolean) {
@@ -253,13 +254,11 @@ export class LayoutContentDirective implements LayoutMouseListener {
     selector: '[layoutSidebar]',
     host: {
         '(mouseenter)': 'onMouseEnter()',
-        '(mouseleave)': 'onMouseLeave()',
-        '[style.width]':'sidebarWidth'
+        '(mouseleave)': 'onMouseLeave()'
     }
 })
 export class LayoutSidebarDirective implements LayoutMouseListener {
     _type = ['layout','mouse'];
-    sidebarWidth:number;
     private currentSchema: LayoutSchema;
 
     constructor(private el: ElementRef, private renderer: Renderer, private layoutManager: LayoutManager) {

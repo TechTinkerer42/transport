@@ -7,6 +7,9 @@
 @import 'forms';
 @import 'layout';
 @import 'bootstrap_elem_overrides';
+@import 'theme/imports/layouts';
+@import 'theme/imports/sidebar';
+@import 'theme/imports/header';
 
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/bootstrap/scss/bootstrap-grid';

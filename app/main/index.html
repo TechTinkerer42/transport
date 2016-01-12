@@ -1,5 +1,9 @@
 <nav class="navbar navbar-dark navbar-full bg-inverse">
-  <a class="navbar-brand" href="#">BDP Transport</a>
+  <a href="" [routerLink]="['./Home']" id="logo" class="navbar-brand">
+      <img src="../images/logo-bdp.png" alt="" class="normal-logo logo-white"/>
+      <img src="../images/logo-bdp-black.png" alt="" class="normal-logo logo-black"/>
+      <img src="../images/logo-bdp-small.png" alt="" class="small-logo hidden-sm-up hidden"/>
+  </a>
   <div id="navbar">
     <nav class="nav navbar-nav pull-xs-left">
       <layout-offcanvas-button></layout-offcanvas-button>
@@ -34,12 +38,11 @@
         </ul>
       </div>
     </nav>
-
   </div>
 </nav>
 
 <div class="layout-master" layoutMaster>
-    <sidebar class="layout-sidebar" layoutSidebar>
+    <sidebar class="layout-sidebar col-left" layoutSidebar>
       <div class="sidebar-inner">
         <h5 class="link">Sidebar</h5>
 
