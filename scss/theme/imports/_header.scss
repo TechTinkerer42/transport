@@ -34,8 +34,8 @@
 	line-height: 1.7;
 	padding-left: 35px;
 	@include transition(border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s);
-	
-	&:hover, 
+
+	&:hover,
 	&:focus {
 		background-color: #f6f6f6;
 		color: #707070;
@@ -54,28 +54,26 @@
 	}
 }
 
-.navbar > .container .navbar-brand {
+.navbar-brand {
 	background: #34495e;
 	color: #fff;
-    font-family: 'Titillium Web',Geneva,sans-serif;
-    font-weight: 700;
-    width: 220px;
-    margin-left: -8px;
-    padding: 10px 15px;
+  width: 220px;
+  // margin-left: -8px;
+  padding: 10px 15px;
 
-    @media (max-width: $break-sm-max) {
-		background: transparent;
-		color: #262626;
-	}
-    @media (max-width: $break-xs-max) {
-		padding-top: 12px;
-		padding-top: 12.5px;
-	}
+  //   @media (max-width: $break-sm-max) {
+	// 	background: transparent;
+	// 	color: #262626;
+	// }
+  //   @media (max-width: $break-xs-max) {
+	// 	padding-top: 12px;
+	// 	padding-top: 12.5px;
+	// }
 }
 #logo {
 	@media (max-width: $break-xs-max) {
 		width: 150px;
-		padding-left: 0;
+		// padding-left: 0;
 		font-size: 1em;
 		margin-left: 6px;
 	}
@@ -96,7 +94,7 @@
 	}
 	&.navbar-brand > img {
 	    margin: 0 auto;
-	    padding-right: 4px;
+	    // padding-right: 4px;
 	    height: 30px;
 
 	    @media (max-width: $break-xs-max) {
@@ -171,7 +169,7 @@
 		padding-top: 8px;
 		padding-bottom: 7px;
 		line-height: 35px;
-	
+
 		> img {
 			@include border-radius(50%);
 		    float: left;
@@ -209,7 +207,7 @@
 	font-size: 1.125em;
 }
 #sidebar-nav .nav > li > a:focus,
-#sidebar-nav .nav .open > a, 
+#sidebar-nav .nav .open > a,
 #sidebar-nav .nav .open > a:focus {
 	background: inherit;
 }
@@ -221,33 +219,33 @@
 }
 #header-navbar .nav > li > a:hover,
 #header-navbar .nav > li > a:focus,
-#header-navbar .nav .open > a, 
-#header-navbar .nav .open > a:hover, 
+#header-navbar .nav .open > a,
+#header-navbar .nav .open > a:hover,
 #header-navbar .nav .open > a:focus,
 .navbar-toggle:hover,
-.navbar-toggle:focus, 
+.navbar-toggle:focus,
 .mobile-search.active > .btn {
 	background: $primary-color;
     color: #fff;
 }
 #header-navbar .nav > li > a:hover,
 #header-navbar .nav > li > a:focus,
-#header-navbar .nav .open > a, 
-#header-navbar .nav .open > a:hover, 
+#header-navbar .nav .open > a,
+#header-navbar .nav .open > a:hover,
 #header-navbar .nav .open > a:focus {
 	background-color: $primary-color;
 }
-.nav-pills > li.active > a, 
-.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus,
-#sidebar-nav .nav-pills > li.active > a, 
-#sidebar-nav .nav-pills > li.active > a:hover, 
+#sidebar-nav .nav-pills > li.active > a,
+#sidebar-nav .nav-pills > li.active > a:hover,
 #sidebar-nav .nav-pills > li.active > a:focus,
-.nav-pills > li.open > a, 
-.nav-pills > li.open > a:hover, 
+.nav-pills > li.open > a,
+.nav-pills > li.open > a:hover,
 .nav-pills > li.open > a:focus,
-#sidebar-nav .nav-pills > li.open > a, 
-#sidebar-nav .nav-pills > li.open > a:hover, 
+#sidebar-nav .nav-pills > li.open > a,
+#sidebar-nav .nav-pills > li.open > a:hover,
 #sidebar-nav .nav-pills > li.open > a:focus,
 .nav-small #nav-col #sidebar-nav .nav-pills > li.open > a {
 	background-color: darken(#2c3e50, 4%);
@@ -351,7 +349,7 @@
 		@media (max-width: $break-sm-max) {
 			width: auto;
 		}
-	
+
 		.drowdown-search {
 			width: 220px;
 			left: 0;
@@ -386,7 +384,7 @@
 	    padding-bottom: 0;
 	    padding-top: 0;
 	    clear: both;
-	
+
 		> a > i {
 			color: $red-color;
 		}
@@ -395,9 +393,9 @@
 		    white-space: normal;
 		    padding-bottom: 8px;
 		    padding-top: 8px;
-		
+
 			.content {
-				
+
 			}
 			.time {
 				color: $primary-color;
@@ -405,7 +403,7 @@
 				position: absolute;
 			    right: 13px;
 			    white-space: normal !important;
-			
+
 				i {
 					margin-right: 3px;
 				}
@@ -417,13 +415,13 @@
 	    padding-bottom: 0;
 	    padding-top: 0;
 	    @include border-radius(0 0 $border-radius-base $border-radius-base);
-	
+
 		a {
 			padding: 8px 20px;
 		    text-align: center;
 		    @include transition(border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s);
 		    color: #fff;
-		
+
 			&:hover,
 			&:focus {
 				background-color: $primary-color-dark;
@@ -440,7 +438,7 @@
 	    top: -12px;
 	    width: 12px;
 	    display: none !important;
-	
+
 		.pointer-inner {
 			position: relative;
 		}
@@ -476,7 +474,7 @@
 		padding-right: 20px;
 		padding-bottom: 25px;
 		@include transition(border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s);
-	
+
 		> img {
 			position: absolute;
 			margin-top: 10px;
@@ -485,7 +483,7 @@
 			display: block;
 		    padding-left: 50px;
 		    padding-top: 5px;
-		
+
 			.content-headline {
 				color: #605F5F;
 			    display: block;

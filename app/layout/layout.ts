@@ -11,7 +11,7 @@ interface LayoutListener {
 
 
 interface LayoutMouseListener extends LayoutListener {
-    notifyMouse(inOrOut: boolean): void;
+    notifyMouse(isMouseEnter: boolean): void;
 }
 
 
@@ -30,25 +30,27 @@ const OPEN_BAR_CLASS = 'is-open-bar';
 const THIN_BAR_CLASS = 'is-thin-bar';
 const OFF_CANVAS_CLASS = 'is-off-canvas';
 const MIN_WIDTH = 768;
-const SIDEBAR_OPEN = 250;
+const SIDEBAR_OPEN = 220;
 const SIDEBAR_BAR = 35;
 
 
 
 export class LayoutManager {
     private listeners: LayoutListener[] = [];
-    private profileSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
+    private profileSchema: LayoutSchema;
     private windowWidth:number;
 
-    activeSchema: LayoutSchema = LayoutSchema.AlwaysOpen;
+    activeSchema: LayoutSchema;
 
     constructor() {
         this.windowWidth = _window().innerWidth;
+        this.activeSchema = LayoutSchema.AlwaysOpen;
+        this.profileSchema = this.activeSchema;
         // todo get storage and pull/save prefered layout
     }
 
     setLayout(schema: LayoutSchema) {
-        this.profileSchema = schema;
+        console.log(`layout:${schema}`);
         this.activeSchema = schema;
         this.listeners.forEach((listener: LayoutListener) => {
             this.updateListener(listener);
@@ -64,15 +66,21 @@ export class LayoutManager {
         this.updateListener(listener);
     }
 
-    notifyAllMouse(inOrOut: boolean) {
+    notifyAllMouse(isMouseEnter: boolean) {
+        console.log(`mouse:${isMouseEnter}`);
+
         this.listeners.forEach((listener) => {
             if (listener._type.indexOf('mouse') >= 0) {
-                (<LayoutMouseListener>listener).notifyMouse(inOrOut);
+                if (this.activeSchema == LayoutSchema.AutoHide) {
+                    (<LayoutMouseListener>listener).notifyMouse(isMouseEnter);
+                }
             }
         });
     }
 
     notifyWindowResize(size:number) {
+        console.log(`resize:${size}`);
+
         if (size < MIN_WIDTH && this.activeSchema != LayoutSchema.OffCanvas) {
             this.activeSchema = LayoutSchema.OffCanvas;
             this.setLayout(this.activeSchema);
@@ -136,15 +144,13 @@ export class OffCanvasButton implements LayoutListener {
     }
 
     toggleSidebar() {
-        if (this.layoutSchema == LayoutSchema.OffCanvas) {
-            if (this.toggleState) {
-                this.layoutManager.notifyAllMouse(false);
-                this.toggleState = false;
-            }
-            else {
-                this.layoutManager.notifyAllMouse(true);
-                this.toggleState = true;
-            }
+        if (this.toggleState) {
+            this.layoutManager.notifyAllMouse(false);
+            this.toggleState = false;
+        }
+        else {
+            this.layoutManager.notifyAllMouse(true);
+            this.toggleState = true;
         }
     }
 }
@@ -174,15 +180,17 @@ export class LayoutMasterDirective implements LayoutWindowListener, LayoutMouseL
 
         switch (this.layoutSchema) {
             case LayoutSchema.AutoHide:
+                this.renderer.setElementClass(this.el, THIN_BAR_CLASS, true);
                 this.renderer.setElementClass(this.el, OPEN_BAR_CLASS, false);
                 this.renderer.setElementClass(this.el, OFF_CANVAS_CLASS, false);
-                this.renderer.setElementClass(this.el, THIN_BAR_CLASS, true);
+                this.layoutWidth = '100%';
                 break;
 
             case LayoutSchema.AlwaysOpen:
                 this.renderer.setElementClass(this.el, OPEN_BAR_CLASS, true);
                 this.renderer.setElementClass(this.el, THIN_BAR_CLASS, false);
-                    this.renderer.setElementClass(this.el, OFF_CANVAS_CLASS, false);
+                this.renderer.setElementClass(this.el, OFF_CANVAS_CLASS, false);
+                this.layoutWidth = '100%';
                 break;
 
             case LayoutSchema.OffCanvas:
@@ -199,7 +207,7 @@ export class LayoutMasterDirective implements LayoutWindowListener, LayoutMouseL
             this.layoutWidth = (size + SIDEBAR_OPEN) + 'px';
         }
         else {
-            this.layoutWidth = (size) + 'px';
+            this.layoutWidth = '100%';
         }
     }
 
@@ -244,7 +252,7 @@ export class LayoutContentDirective implements LayoutMouseListener {
     changeLayout(name: LayoutSchema) {
     }
 
-    notifyMouse(inOrOut: boolean) {
+    notifyMouse(isMouseEnter: boolean) {
     }
 }
 
@@ -270,17 +278,13 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
     }
 
     onMouseEnter() {
-        if (this.currentSchema == LayoutSchema.AutoHide) {
-            this.layoutManager.notifyAllMouse(true);
-        }
+        this.layoutManager.notifyAllMouse(true);
     }
 
     onMouseLeave() {
-        if (this.currentSchema == LayoutSchema.AutoHide) {
-            this.layoutManager.notifyAllMouse(false);
-        }
+        this.layoutManager.notifyAllMouse(false);
     }
 
-    notifyMouse(inOrOut: boolean) {
+    notifyMouse(isMouseEnter: boolean) {
     }
 }

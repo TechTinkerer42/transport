@@ -1,5 +1,5 @@
-<form  (window:resize)="windowResize($event)">
-  <fieldset>
+<form>
+  <fieldset (window:resize)="windowResize($event)">
     <legend>Sidebar preference</legend>
     <label class="c-input c-radio">
       <input type="radio" name="sidebar-preference" id="offside" (click)="changeLayout(0)" [checked]="layoutSchema===0">
@@ -17,3 +17,4 @@
       Off Canvas
     </label>
   </fieldset>
+</form>

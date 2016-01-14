@@ -8,7 +8,7 @@ html, body {
 }
 body {
 	color: $text-color;
-	background: url("../images/whitey.jpg") repeat scroll 0 0 #fff;
+	background: url("images/whitey.jpg") repeat scroll 0 0 #fff;
 	background-size: 220px 220px;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -190,37 +190,11 @@ a {
 	height: 100%;
 	margin-top: 0;
 	margin-bottom: 0;
-	position: relative;
-	min-height: 1200px;
-	padding: 15px 15px 35px 15px;
-	margin-left: 220px;
-
-	@media (max-width: $break-sm-max) {
-		margin-left: 0;
-		border-left: 0 !important;
-		border-right: 0 !important;
-	}
-	@media (max-width: $break-xs-max) {
-		padding: 10px 8px 0 8px;
-	}
-	@media (max-width: $break-xxs-max) {
-		padding: 5px 5px 0 5px;
-	}
-
-	> .row {
-		@include opacity(1);
-		/*transition: opacity 0.8s ease-in-out 0s;*/
-	}
 }
 #content-header {
 	background: lighten($main-bg-color, 4%);
-	margin: -15px -15px 20px -15px;
-	padding: 15px;
+	padding-bottom: 15px;
 	border-bottom: 1px solid darken($main-bg-color, 3%);
-
-	@media (max-width: $break-xs-max) {
-		margin: -15px -5px 20px -5px;
-	}
 }
 #content-header h1 {
 	margin-bottom: 0;

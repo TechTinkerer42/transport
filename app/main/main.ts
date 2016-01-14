@@ -15,7 +15,7 @@ import {LayoutManager,LayoutSidebarDirective, LayoutMasterDirective, LayoutConte
   templateUrl: 'app/main/index.html',
   providers:[],
   directives: [ROUTER_DIRECTIVES,DROPDOWN_DIRECTIVES,
-    LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective, OffCanvasButton]
+    LayoutSidebarDirective, LayoutMasterDirective, LayoutContentDirective,OffCanvasButton]
 })
 @RouteConfig([
   { path: '/', name: 'Home', component: HomeComponent } ,

@@ -1,10 +1,11 @@
-$sidebar-open-size: 250px;
+$sidebar-open-size: 220px;
 $sidebar-thin-size: 35px;
 body {
   background: #ddd;
 }
 .pane-header {
-  background: #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .layout-master {
   position: relative;
@@ -39,7 +40,6 @@ body {
 .layout-content {
   display: table-cell;
   vertical-align: top;
-  background: #fff;
 }
 .layout-footer {
   padding: 10px;

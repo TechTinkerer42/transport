@@ -1,17 +1,16 @@
-<nav class="navbar navbar-dark navbar-full bg-inverse">
+<nav class="navbar navbar-full" id="header-navbar" >
   <a href="" [routerLink]="['./Home']" id="logo" class="navbar-brand">
       <img src="../images/logo-bdp.png" alt="" class="normal-logo logo-white"/>
       <img src="../images/logo-bdp-black.png" alt="" class="normal-logo logo-black"/>
       <img src="../images/logo-bdp-small.png" alt="" class="small-logo hidden-sm-up hidden"/>
   </a>
   <div id="navbar">
-    <nav class="nav navbar-nav pull-xs-left">
+    <nav class="nav navbar-nav pull-xs-left nav-pad">
       <layout-offcanvas-button></layout-offcanvas-button>
       <div class="btn-group" dropdown>
-        <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
+        <a href id="single-button" dropdown-toggle>
           New
-          <span class="caret"></span>
-        </button>
+        </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
           <li role="menuitem"><a class="dropdown-item" href="#">Agent</a></li>
           <li role="menuitem"><a class="dropdown-item" href="#">Booking</a></li>
@@ -21,40 +20,49 @@
         </ul>
       </div>
     </nav>
-    <form class="pull-xs-left">
-      <input class="form-control" placeholder="Search..." type="search">
+    <form class="pull-xs-left global-search col-xs-4">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputAmount">Search</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+          <input type="search" class="form-control" id="exampleInputAmount" placeholder="(search)">
+        </div>
+      </div>
     </form>
-    <nav class="nav pull-xs-right">
+    <nav class="nav pull-xs-right nav-pad">
       <a class="nav-item nav-link" href="#"><i class="fa fa-power-off"></i></a>
     </nav>
-    <nav class="nav navbar-nav pull-xs-right">
+    <nav class="nav navbar-nav pull-xs-right nav-pad">
       <div class="btn-group" dropdown>
         <a href id="simple-dropdown" dropdown-toggle>
           Profile
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="single-dropdown">
-          <li role="menuitem"><a class="dropdown-item" href="#">Something</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Else</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Preferences</a></li>
         </ul>
       </div>
     </nav>
   </div>
 </nav>
 
-<div class="layout-master" layoutMaster>
-    <sidebar class="layout-sidebar col-left" layoutSidebar>
-      <div class="sidebar-inner">
+<div class="layout-master s-main" layoutMaster>
+    <sidebar class="layout-sidebar col-left nav-col"  layoutSidebar>
+      <div id="sidebar-nav">
         <h5 class="link">Sidebar</h5>
 
-        <ul class="list-unstyled">
-          <li><i class="fa fa-home"></i>  <a class="link" [routerLink]="['./Home']">Home</a></li>
-          <li><i class="fa fa-train"></i>  <a class="link"  [routerLink]="['./Agent']">Agent</a></li>
-          <li><i class="fa fa-truck"></i>  <a class="link"  [routerLink]="['./Forms']">Forms</a></li>
-          <li><i class="fa fa-ship"></i> <a class="link" href=""> Administration</a>
-            <ul class="menu vertical nested link">
-              <li> <a href="#">Users</a> </li>
-              <li><a href="#">Intermodal</a></li>
-              <li><a href="#">Standard Fees</a></li>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a class="nav-link" [routerLink]="['./Home']"><i class="fa fa-home"></i>   <span>Home</span></a></li>
+          <li><a class="nav-link"  [routerLink]="['./Agent']"><i class="fa fa-train"></i>  <span>Agent</span></a></li>
+          <li><a class="nav-link"  [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  <span>Forms</span></a></li>
+          <li class="nav-link" dropdown>
+            <a class="nav-link dropdown-toggle" href="#" dropdown-toggle id="admin-menu">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="admin-menu">
+              <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         </ul>
