@@ -49,15 +49,12 @@
 <div class="layout-master s-main" layoutMaster>
     <sidebar class="layout-sidebar col-left nav-col"  layoutSidebar>
       <div id="sidebar-nav">
-        <h5 class="link">Sidebar</h5>
-
         <ul class="nav nav-pills nav-stacked">
-          <li><a class="nav-link" [routerLink]="['./Home']"><i class="fa fa-home"></i>   <span>Home</span></a></li>
-          <li><a class="nav-link"  [routerLink]="['./Agent']"><i class="fa fa-train"></i>  <span>Agent</span></a></li>
-          <li><a class="nav-link"  [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  <span>Forms</span></a></li>
-          <li class="nav-link" dropdown>
-            <a class="nav-link dropdown-toggle" href="#" dropdown-toggle id="admin-menu">
-              Dropdown
+          <li><a class="nav-link link" [routerLink]="['./Home']"><i class="fa fa-home"></i>   <span>Home</span></a></li>
+          <li><a class="nav-link link" [routerLink]="['./Agent']"><i class="fa fa-train"></i>  <span>Agent</span></a></li>
+          <li><a class="nav-link link" [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  <span>Forms</span></a></li>
+          <li dropdown><a class="nav-link dropdown-toggle" href="#" dropdown-toggle id="admin-menu"><i class="fa fa-globe"></i>
+              <span>Dropdown</span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="admin-menu">
               <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
