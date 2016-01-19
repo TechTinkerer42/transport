@@ -16,5 +16,10 @@
       <span class="c-indicator"></span>
       Off Canvas
     </label>
+    <label class="c-input c-radio">
+      <input type="radio" name="sidebar-preference" id="alwaysopen" (click)="changeLayout(3)" [checked]="layoutSchema===3">
+      <span class="c-indicator"></span>
+      Bar
+    </label>
   </fieldset>
 </form>

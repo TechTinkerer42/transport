@@ -23,7 +23,9 @@ body {
     .layout-sidebar {
       width: $sidebar-thin-size;
       .link {
-        display: none;
+        span {
+          display: none;
+        }
       }
     }
   }

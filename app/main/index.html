@@ -8,7 +8,7 @@
     <nav class="nav navbar-nav pull-xs-left nav-pad">
       <layout-offcanvas-button></layout-offcanvas-button>
       <div class="btn-group" dropdown>
-        <a href id="single-button" dropdown-toggle>
+        <a href id="single-button" class="nav-link dropdown-toggle" dropdown-toggle>
           New
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
@@ -53,7 +53,7 @@
           <li><a class="nav-link link" [routerLink]="['./Home']"><i class="fa fa-home"></i>   <span>Home</span></a></li>
           <li><a class="nav-link link" [routerLink]="['./Agent']"><i class="fa fa-train"></i>  <span>Agent</span></a></li>
           <li><a class="nav-link link" [routerLink]="['./Forms']"><i class="fa fa-truck"></i>  <span>Forms</span></a></li>
-          <li dropdown><a class="nav-link dropdown-toggle" href="#" dropdown-toggle id="admin-menu"><i class="fa fa-globe"></i>
+          <li dropdown><a class="nav-link dropdown-toggle link" href="#" dropdown-toggle id="admin-menu"><i class="fa fa-globe"></i>
               <span>Dropdown</span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="admin-menu">

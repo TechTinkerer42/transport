@@ -1,7 +1,12 @@
 import {Directive, Component, View, ElementRef, Renderer, Input} from 'angular2/core';
 import {window} from 'angular2/src/facade/browser';
 
-export enum LayoutSchema { AutoHide, AlwaysOpen, OffCanvas };
+export enum LayoutSchema {
+    AutoHide,
+    AlwaysOpen,
+    OffCanvas,
+    Bar
+};
 
 
 interface LayoutListener {
@@ -71,7 +76,8 @@ export class LayoutManager {
 
         this.listeners.forEach((listener) => {
             if (listener._type.indexOf('mouse') >= 0) {
-                if (this.activeSchema == LayoutSchema.AutoHide) {
+                if (this.activeSchema == LayoutSchema.AutoHide ||
+                        this.activeSchema == LayoutSchema.OffCanvas) {
                     (<LayoutMouseListener>listener).notifyMouse(isMouseEnter);
                 }
             }
@@ -199,6 +205,13 @@ export class LayoutMasterDirective implements LayoutWindowListener, LayoutMouseL
                 this.renderer.setElementClass(this.el, THIN_BAR_CLASS, false);
                 this.notifyResize(_window().innerWidth);
                 break;
+
+                case LayoutSchema.Bar:
+                    this.renderer.setElementClass(this.el, THIN_BAR_CLASS, true);
+                    this.renderer.setElementClass(this.el, OPEN_BAR_CLASS, false);
+                    this.renderer.setElementClass(this.el, OFF_CANVAS_CLASS, false);
+                    this.layoutWidth = '100%';
+                    break;
         }
     }
 
@@ -278,11 +291,15 @@ export class LayoutSidebarDirective implements LayoutMouseListener {
     }
 
     onMouseEnter() {
-        this.layoutManager.notifyAllMouse(true);
+        if(this.layoutManager.activeSchema == LayoutSchema.AutoHide) {
+            this.layoutManager.notifyAllMouse(true);
+        }
     }
 
     onMouseLeave() {
-        this.layoutManager.notifyAllMouse(false);
+        if(this.layoutManager.activeSchema == LayoutSchema.AutoHide) {
+            this.layoutManager.notifyAllMouse(false);
+        }
     }
 
     notifyMouse(isMouseEnter: boolean) {
