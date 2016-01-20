@@ -2,27 +2,25 @@
 
 
 // overrides go before import
-@import 'bootstrap_override';
-@import 'variables';
 @import 'mixins';
-@import 'forms';
-@import 'layout';
-@import 'bootstrap_elem_overrides';
+@import 'variables';
+
 @import 'theme/imports/layouts';
 @import 'theme/imports/sidebar';
 @import 'theme/imports/header';
 
+@import 'bootstrap_override';
+
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/bootstrap/scss/bootstrap-grid';
 
+@import 'bootstrap_elem_overrides';
 
-.form-control {
-  font-family: 'Helvetica neue',arial, Helvetica, sans-serif;
-}
-select.form-control {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb(100,100,100)"></polygon></svg>');
-  box-shadow: none;
-}
+@import 'forms';
+@import 'angular_form';
+@import 'layout';
+
+
 th, td {
   font-family: 'Helvetica neue',arial, Helvetica, sans-serif;
 }
@@ -35,7 +33,7 @@ th, td {
   margin-left:0;
 }
 body {
-  background: #d4d8dc;  
+  background: #d4d8dc;
 }
 .s-main {
   box-shadow: 0 3px 3px #ccc;

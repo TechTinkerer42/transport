@@ -24,9 +24,7 @@
             <fieldset class="form-group">
               <label for="name">Name</label>
               <input id="name" class="form-control" type="text" [(ngModel)]="carrier.name" ngControl="name" #name="ngForm" placeholder="Name" required>
-              <span [hidden]="name.valid">
-            <span class="alert label"> Name is required </span>
-              </span>
+              <span [hidden]="name.valid" class="alert-danger label under-input"> Name is required </span>
             </fieldset>
             <fieldset class="form-group">
               <label for="status">Status</label>
