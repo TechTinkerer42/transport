@@ -193,12 +193,14 @@ a {
 }
 #content-header {
 	background: lighten($main-bg-color, 4%);
-	padding-bottom: 15px;
+	padding: 15px 15px 15px 0;
 	border-bottom: 1px solid darken($main-bg-color, 3%);
-}
-#content-header h1 {
-	margin-bottom: 0;
-	font-size: 1.8em;
+
+	h1 {
+		margin-bottom: 0;
+		font-size: 1.8em;
+		color:#03A9F4;
+	}
 }
 .main-box {
 	background: #FFFFFF;

@@ -5,9 +5,11 @@
 @import 'mixins';
 @import 'variables';
 
+// cube theme
 @import 'theme/imports/layouts';
 @import 'theme/imports/sidebar';
 @import 'theme/imports/header';
+@import 'theme/imports/layouts';
 
 @import 'bootstrap_override';
 
